@@ -1,0 +1,103 @@
+.poll-form-container {
+	width: 100%;
+	border: none;
+	position: relative;
+	margin: 30px auto 0px auto;
+	border-radius: 10px;
+	color: black;
+	margin-top: 100px;
+	z-index: 0;
+	transition-property: margin-top;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
+	&.open {
+		margin-top: 180px;
+	}
+}
+
+.poll-form-header {
+	font-size: 20px;
+	text-align: left;
+	font-weight: normal;
+}
+
+.poll-form {
+	width: 90%;
+	margin: auto;
+}
+
+.error-message-container {
+	height: 15px;
+	width: 100%;
+	text-align: left;
+	color: red;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.button-container {
+	width: 220px;
+	height: 60px;
+	margin: auto;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+.create-poll-button {
+	position: relative;
+	height: 40px;
+	line-height: 40px;
+	width: 100px;
+	border-radius: 5px;
+	background-color: $light-blue;
+	border: none;
+	font-size: 14px;
+	color: white;
+	float: left;
+	opacity: 0.5;
+	&.active {
+		opacity: 1;
+		line-height: 35px;
+		&:hover {
+			opacity: 0.7;
+			cursor: pointer;
+		}
+	}
+}
+
+.cancel-button {
+	height: 40px;
+	width: 100px;
+	background-color: transparent;
+	border: 1px solid $light-blue;
+	border-radius: 5px;
+	font-size: 14px;
+	color: $light-blue;
+	float: right;
+	&:hover {
+		opacity: 0.7;
+		cursor: pointer;
+	}
+}
+
+@media (min-width: 300px) {
+	.poll-form-header {
+		font-size: 30px;
+	}
+}
+
+@media (min-width: 500px) {
+	.poll-form-container {
+		border: 1px solid #ddd;
+		width: 500px;
+		margin-top: 150px;
+		&.open {
+			margin-top: 230px;
+		}
+	}
+
+	.poll-form {
+		width: 90%;
+	}
+	
+}

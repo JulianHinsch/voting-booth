@@ -1,0 +1,32 @@
+input,textarea {
+	padding: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	border: 1px solid #bbb;
+}
+
+.inputfield {
+	width: 100%;
+	font-size: 14px;
+	line-height: 30px;
+	background-color: white;
+	border: 1px solid #aaa; 
+	&.invalid {
+		background-color: pink;
+		border: 1px solid red;
+	}
+	&:focus {
+		background-color: white;
+		border: 1px solid #aaa; 
+		box-shadow: 0px 0px 5px 1px #aaa;
+	}
+}
+
+.error-message {
+	height: 15px;
+	width: 100%;
+	text-align: left;
+	color: red;
+	font-size: 12px;
+	font-weight: bold;
+}

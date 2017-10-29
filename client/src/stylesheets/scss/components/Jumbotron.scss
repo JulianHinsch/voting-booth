@@ -1,0 +1,60 @@
+.jumbotron {
+	width: 80%;
+	padding: 30px 0px 30px 0px;
+	position: relative;
+	background-color: #ddd;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 100px;
+	z-index: 0;
+	transition-property: margin-top;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
+	&.open {
+		margin-top: 180px;
+	}
+}
+
+.jumbotron-welcome {
+	color: #444;
+	width: 80%;
+	margin: auto;
+	top: 30px;
+	text-align: left;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.jumbotron-button-container {
+	margin-top: 20px;
+}
+
+.jumbotron-button {
+	width: 80%;
+	height: 80px;
+	border-radius: 10px;
+	border: none;
+	font-size: 24px;
+	background-color: $light-blue;
+	color: white;
+	margin: 10px;
+	&:hover {
+		opacity: 0.5;
+		cursor: pointer;
+	}
+}
+
+@media (min-width: 500px) {
+	.jumbotron {
+		margin-top: 150px;
+		&.open {
+			margin-top: 230px;
+		}
+	}
+}
+
+@media (min-width: 750px) {
+	.jumbotron {
+		width: 600px;
+	}
+}

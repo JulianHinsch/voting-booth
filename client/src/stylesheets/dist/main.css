@@ -1,0 +1,731 @@
+body {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: white; }
+
+footer {
+  position: relative;
+  margin-top: 100px;
+  height: 150px;
+  background-color: white;
+  color: #aaa;
+  font-size: 12px;
+  margin-top: 100px;
+  transition-property: margin-top;
+  transition-duration: 0.2s;
+  transition-timing-function: ease; }
+
+.footer-hr {
+  margin-top: 50px;
+  border-top: 1px solid #ddd;
+  width: 75%; }
+
+.footer-copyright {
+  font-size: 10px;
+  margin-top: 5px; }
+
+@media (max-width: 500px) {
+  footer {
+    margin-top: 50px; } }
+/* Hamburger by Jon Suh https://github.com/jonsuh */
+.hamburger {
+  position: absolute;
+  top: 0px;
+  right: 30px;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin: 0;
+  overflow: visible; }
+  .hamburger:hover {
+    opacity: 0.5; }
+
+.hamburger-box {
+  width: 28px;
+  height: 16px;
+  display: inline-block;
+  position: relative; }
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px; }
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  width: 26px;
+  height: 3px;
+  background-color: #4b7bec;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease; }
+
+.hamburger-inner::before, .hamburger-inner::after {
+  content: "";
+  display: block; }
+
+.hamburger-inner::before {
+  top: -9px; }
+
+.hamburger-inner::after {
+  bottom: -9px; }
+
+/* Reverse Vortex Animation */
+.hamburger--vortex-r .hamburger-inner {
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
+
+.hamburger--vortex-r .hamburger-inner::before, .hamburger--vortex-r .hamburger-inner::after {
+  transition-duration: 0s;
+  transition-delay: 0.1s;
+  transition-timing-function: linear; }
+
+.hamburger--vortex-r .hamburger-inner::before {
+  transition-property: top, opacity; }
+
+.hamburger--vortex-r .hamburger-inner::after {
+  transition-property: bottom, transform; }
+
+.hamburger--vortex-r.open .hamburger-inner {
+  transform: rotate(-765deg);
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
+
+.hamburger--vortex-r.open .hamburger-inner::before, .hamburger--vortex-r.open .hamburger-inner::after {
+  transition-delay: 0s; }
+
+.hamburger--vortex-r.open .hamburger-inner::before {
+  top: 0;
+  opacity: 0; }
+
+.hamburger--vortex-r.open .hamburger-inner::after {
+  bottom: 0;
+  transform: rotate(-90deg); }
+
+.header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  background-color: white;
+  z-index: 5; }
+
+.logo-container {
+  position: absolute;
+  top: 10px;
+  left: 10px; }
+
+.header-button {
+  width: 80px;
+  height: 40px;
+  font-size: 14px;
+  width: 80px;
+  position: absolute;
+  top: 20px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: none;
+  color: #4b7bec;
+  right: 25px; }
+  .header-button.login {
+    right: 110px;
+    width: 60px; }
+  .header-button.signup {
+    background-color: #4b7bec;
+    color: white; }
+  .header-button:hover {
+    cursor: pointer;
+    opacity: 0.7; }
+
+.username {
+  position: absolute;
+  right: 110px;
+  color: black; }
+
+.greeting {
+  color: #4b7bec; }
+
+.controls-container, .logo-large {
+  display: none; }
+
+@media (min-width: 400px) {
+  .logo-large {
+    display: block; }
+
+  .logo-small {
+    display: none; } }
+@media (min-width: 600px) {
+  .hamburger-container {
+    display: none; }
+
+  .controls-container {
+    display: block; } }
+input, textarea {
+  padding: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border: 1px solid #bbb; }
+
+.inputfield {
+  width: 100%;
+  font-size: 14px;
+  line-height: 30px;
+  background-color: white;
+  border: 1px solid #aaa; }
+  .inputfield.invalid {
+    background-color: pink;
+    border: 1px solid red; }
+  .inputfield:focus {
+    background-color: white;
+    border: 1px solid #aaa;
+    box-shadow: 0px 0px 5px 1px #aaa; }
+
+.error-message {
+  height: 15px;
+  width: 100%;
+  text-align: left;
+  color: red;
+  font-size: 12px;
+  font-weight: bold; }
+
+.jumbotron {
+  width: 80%;
+  padding: 30px 0px 30px 0px;
+  position: relative;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 100px;
+  z-index: 0;
+  transition-property: margin-top;
+  transition-duration: 0.2s;
+  transition-timing-function: ease; }
+  .jumbotron.open {
+    margin-top: 180px; }
+
+.jumbotron-welcome {
+  color: #444;
+  width: 80%;
+  margin: auto;
+  top: 30px;
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold; }
+
+.jumbotron-button-container {
+  margin-top: 20px; }
+
+.jumbotron-button {
+  width: 80%;
+  height: 80px;
+  border-radius: 10px;
+  border: none;
+  font-size: 24px;
+  background-color: #4b7bec;
+  color: white;
+  margin: 10px; }
+  .jumbotron-button:hover {
+    opacity: 0.5;
+    cursor: pointer; }
+
+@media (min-width: 500px) {
+  .jumbotron {
+    margin-top: 150px; }
+    .jumbotron.open {
+      margin-top: 230px; } }
+@media (min-width: 750px) {
+  .jumbotron {
+    width: 600px; } }
+.header-container {
+  margin-top: 30px; }
+
+.login-form-container {
+  width: 100%;
+  position: relative;
+  margin: 30px auto 0px auto;
+  border-radius: 10px;
+  padding: 20px 0px 40px 0px;
+  border: none;
+  color: black; }
+
+.login-form-header {
+  font-size: 20px;
+  text-align: left;
+  font-weight: normal; }
+
+.login-form {
+  width: 90%;
+  margin: auto; }
+
+.input-label {
+  font-weight: bold;
+  float: left;
+  font-size: 14px;
+  margin: 10px 0px 5px 0px; }
+
+.form-hr {
+  margin: 15px auto 15px auto;
+  border-top: 1px solid #ddd;
+  width: 60%; }
+
+.login-button-container {
+  margin-top: 20px;
+  text-align: center; }
+
+.login-button {
+  width: 80%;
+  height: 30px;
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  margin-right: 10px;
+  font-size: 12px; }
+  .login-button:hover {
+    cursor: pointer;
+    border: 1px solid #719ECE; }
+
+.signup-link-container {
+  font-size: 14px;
+  width: 90%;
+  margin: auto; }
+
+.signup-link {
+  color: blue;
+  text-decoration: none; }
+  .signup-link:hover {
+    text-decoration: underline; }
+
+@media (min-width: 300px) {
+  .login-form {
+    width: 270px;
+    margin: auto; }
+
+  .login-form-header {
+    font-size: 30px; } }
+@media (min-width: 500px) {
+  .login-form-container {
+    width: 500px;
+    border: 1px solid #ddd; } }
+.logo {
+  width: 53px;
+  margin: 3px 0px 0px 6px; }
+  .logo:hover {
+    cursor: pointer; }
+
+tr {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: left;
+  padding-left: 10px;
+  border: 1px solid #aaa; }
+  tr:hover {
+    background-color: #eee;
+    cursor: pointer; }
+
+td {
+  border: 0px;
+  padding: 0px;
+  padding-left: 10px; }
+
+.poll-option-data {
+  margin-right: 0px;
+  height: 60px;
+  width: 130px; }
+
+.poll-option-percentage {
+  position: relative;
+  float: right;
+  margin: 5px 5px 5px 5px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 25px;
+  font-weight: bold;
+  background-color: #4b7bec;
+  color: white; }
+
+.back-link-container {
+  margin: 20px auto 0px auto;
+  width: 75%;
+  text-align: left; }
+
+.poll-detail-view {
+  padding: 30px 0px 30px 0px;
+  position: relative;
+  width: 80%;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 100px;
+  z-index: 0;
+  transition-property: margin-top;
+  transition-duration: 0.2s;
+  transition-timing-function: ease; }
+  .poll-detail-view.open {
+    margin-top: 180px; }
+
+.poll-detail-header {
+  color: #444;
+  width: 80%;
+  margin: auto;
+  top: 30px;
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 10px; }
+
+.poll-detail-info {
+  color: #222;
+  font-size: 10px;
+  width: 80%;
+  text-align: left;
+  margin: 0px auto 5px auto;
+  padding-left: 10px; }
+
+.poll-options-table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+  background-color: white;
+  border: 1px solid #aaa;
+  padding: 0px; }
+  .poll-options-table.voted {
+    opacity: 0.5; }
+    .poll-options-table.voted tr:hover {
+      background-color: #fff;
+      cursor: default; }
+
+.back-link {
+  color: blue;
+  text-decoration: none; }
+  .back-link:hover {
+    text-decoration: underline; }
+
+.poll-thank-you-container {
+  margin: 20px auto 10px auto;
+  position: relative;
+  height: 40px;
+  width: 60%;
+  text-align: left;
+  padding: 0px 10px 0px 10px;
+  line-height: 40px;
+  background-color: #d9eecc;
+  border: 1px solid #b7ccaa;
+  color: #336527;
+  border-radius: 5px;
+  visibility: hidden; }
+  .poll-thank-you-container.visible {
+    visibility: visible; }
+
+.poll-thank-you-x {
+  height: 30px;
+  color: #888;
+  float: right;
+  font-size: 18px;
+  font-weight: lighter;
+  margin: 0px 0px 0px 0px; }
+  .poll-thank-you-x:hover {
+    opacity: 0.75;
+    cursor: pointer; }
+
+@media (min-width: 500px) {
+  .poll-detail-view {
+    margin-top: 150px; }
+    .poll-detail-view.open {
+      margin-top: 230px; } }
+@media (min-width: 750px) {
+  .poll-detail-view, .poll-thank-you-container {
+    width: 600px; } }
+.poll-form-container {
+  width: 100%;
+  border: none;
+  position: relative;
+  margin: 30px auto 0px auto;
+  border-radius: 10px;
+  color: black;
+  margin-top: 100px;
+  z-index: 0;
+  transition-property: margin-top;
+  transition-duration: 0.2s;
+  transition-timing-function: ease; }
+  .poll-form-container.open {
+    margin-top: 180px; }
+
+.poll-form-header {
+  font-size: 20px;
+  text-align: left;
+  font-weight: normal; }
+
+.poll-form {
+  width: 90%;
+  margin: auto; }
+
+.error-message-container {
+  height: 15px;
+  width: 100%;
+  text-align: left;
+  color: red;
+  font-size: 12px;
+  font-weight: bold; }
+
+.button-container {
+  width: 220px;
+  height: 60px;
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 20px; }
+
+.create-poll-button {
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: #4b7bec;
+  border: none;
+  font-size: 14px;
+  color: white;
+  float: left;
+  opacity: 0.5; }
+  .create-poll-button.active {
+    opacity: 1;
+    line-height: 35px; }
+    .create-poll-button.active:hover {
+      opacity: 0.7;
+      cursor: pointer; }
+
+.cancel-button {
+  height: 40px;
+  width: 100px;
+  background-color: transparent;
+  border: 1px solid #4b7bec;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #4b7bec;
+  float: right; }
+  .cancel-button:hover {
+    opacity: 0.7;
+    cursor: pointer; }
+
+@media (min-width: 300px) {
+  .poll-form-header {
+    font-size: 30px; } }
+@media (min-width: 500px) {
+  .poll-form-container {
+    border: 1px solid #ddd;
+    width: 500px;
+    margin-top: 150px; }
+    .poll-form-container.open {
+      margin-top: 230px; }
+
+  .poll-form {
+    width: 90%; } }
+.poll-list-container {
+  padding: 30px 0px 30px 0px;
+  position: relative;
+  width: 80%;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin: 100px auto 200px auto;
+  z-index: 0;
+  transition-property: margin-top;
+  transition-duration: 0.2s;
+  transition-timing-function: ease; }
+  .poll-list-container.open {
+    margin-top: 180px; }
+
+.poll-list-header {
+  color: #444;
+  width: 80%;
+  margin: auto;
+  top: 30px;
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 10px; }
+
+.poll-link {
+  text-decoration: none; }
+
+.poll-list-view {
+  text-align: left;
+  padding-left: 10px;
+  margin: 0px auto 10px auto;
+  width: 80%;
+  background-color: #4b7bec;
+  color: white;
+  border: 1px solid #4b7bec;
+  line-height: 40px; }
+  .poll-list-view:hover {
+    opacity: 0.5; }
+
+.back-link-container {
+  margin: 20px auto 0px auto;
+  width: 75%;
+  text-align: left; }
+
+.back-link {
+  color: blue;
+  text-decoration: none; }
+  .back-link:hover {
+    text-decoration: underline; }
+
+@media (min-width: 500px) {
+  .poll-list-container {
+    margin-top: 150px; }
+
+  .poll-list-container.open {
+    margin-top: 230px; } }
+@media (min-width: 750px) {
+  .poll-list-container {
+    width: 600px; } }
+.header-container {
+  margin-top: 30px; }
+
+.signup-form-container {
+  position: relative;
+  margin: 30px auto 0px auto;
+  border-radius: 10px;
+  padding: 20px 0px 40px 0px;
+  color: black; }
+
+.signup-form-header {
+  font-size: 20px;
+  text-align: left;
+  font-weight: normal; }
+
+.signup-form {
+  width: 90%;
+  margin: auto; }
+
+.form-hr {
+  margin: 15px auto 15px auto;
+  border-top: 1px solid #ddd;
+  width: 60%; }
+
+.input-label {
+  font-weight: bold;
+  float: left;
+  font-size: 14px;
+  margin: 10px 0px 5px 0px; }
+
+.signup-button-container {
+  margin-top: 20px;
+  text-align: center; }
+
+.signup-button {
+  width: 80%;
+  height: 30px;
+  background-color: #ddd;
+  border: 1px solid #aaa;
+  margin-right: 10px;
+  font-size: 12px;
+  opacity: 0.5; }
+  .signup-button.active {
+    opacity: 1; }
+    .signup-button.active:hover {
+      cursor: pointer;
+      border: 1px solid #719ECE; }
+
+.login-link-container {
+  width: 90%;
+  margin: auto;
+  font-size: 14px; }
+
+.login-link {
+  color: blue;
+  text-decoration: none; }
+  .login-link:hover {
+    text-decoration: underline; }
+
+@media (min-width: 300px) {
+  .signup-form {
+    width: 270px; }
+
+  .signup-form-header {
+    font-size: 30px; } }
+@media (min-width: 500px) {
+  .signup-form-container {
+    width: 500px;
+    border: 1px solid #ddd; } }
+.subheader {
+  position: fixed;
+  top: 0px;
+  background-color: #ddd;
+  height: 80px;
+  width: 100%;
+  z-index: 2;
+  border-bottom: 1px solid #aaa;
+  transition-property: top;
+  transition-duration: 0.2s;
+  transition-timing-function: ease; }
+  .subheader.open {
+    top: 80px; }
+
+.subheader-button-container {
+  height: 80px;
+  position: relative;
+  margin-left: 10%;
+  width: 80%;
+  text-align: left; }
+
+.subheader-button {
+  width: 80px;
+  height: 40px;
+  font-size: 14px;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  color: #4b7bec;
+  top: 20px; }
+  .subheader-button.login {
+    width: 60px;
+    left: 80px; }
+  .subheader-button.signup {
+    background-color: #4b7bec;
+    left: 0px;
+    color: white; }
+  .subheader-button.logout {
+    right: 0px; }
+  .subheader-button:hover {
+    opacity: 0.7;
+    cursor: pointer; }
+
+.sub-username {
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  color: black; }
+
+.greeting {
+  color: #4b7bec; }
+
+@media (min-width: 600px) {
+  .subheader.open {
+    top: 0px; } }
+.text-logo {
+  width: 300px;
+  margin: 0px; }
+
+.text-logo:hover {
+  cursor: pointer; }
+
+@media (max-width: 300px) {
+  .text-logo {
+    width: 90%; } }
+
+/*# sourceMappingURL=main.css.map */

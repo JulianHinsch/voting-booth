@@ -1,0 +1,14 @@
+.text-logo {
+	width: 300px;
+	margin: 0px;
+}
+
+.text-logo:hover {
+	cursor: pointer;
+}
+
+@media (max-width: 300px) {
+	.text-logo {
+		width: 90%;
+	}
+}
