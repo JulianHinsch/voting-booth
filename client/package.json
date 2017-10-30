@@ -1,8 +1,11 @@
 {
   "name": "voting-booth-client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.17.0",
+    "dotenv": "^4.0.0",
+    "immutable": "^3.8.2",
     "proptypes": "^1.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -10,15 +13,18 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.14"
   },
   "scripts": {
+    "sass": "sass --watch src/stylesheets/scss/index.scss:src/stylesheets/dist/main.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }

@@ -1,10 +1,7 @@
 import * as types from './actiontypes';
+import { API_ROOT } from '../apiconfig';
 
-const generateId = () => {
-    var uuidv1 = require('uuid/v1');
-    return uuidv1();
-}
-
+//old
 export const closeSubheader = () => ({
 	type: types.CLOSE_SUBHEADER,
 });
@@ -27,23 +24,127 @@ export const logOut = () => ({
 	type: types.LOG_OUT,
 });
 
-export const createUser = (username,password) => ({
-	type: types.CREATE_USER,
-	username,
-	password
-});
+//new
 
-export const incrementOption = (pollId,optionId) => ({
-	type: types.INCREMENT_OPTION,
-	pollId,
-	optionId
-});
+//polls
+export const createPollSuccess = (poll) => (
+	{type: types.CREATE_POLL_SUCCESS, poll}
+);
 
-export const createPoll = (username,question,options) => {(
-	type: types.CREATE_POLL,
-	timeCreated: new Date(),
-	idx: generateId(),
-	username,
-	question,
-	options
-});
+export const loadPollsSuccess = (polls) => (
+	{type: types.LOAD_POLLS_SUCCESS, polls}
+);
+
+//users
+export const createUserSuccess = (user) => (
+	{type: types.CREATE_POLL_SUCCESS, user}
+);
+
+export const loadUsersSuccess = (users) => (
+	{type: types.LOAD_USERS_SUCCESS, users}
+);
+
+//options
+export const createOptionSuccess = (option) => (
+	{type: types.CREATE_OPTION_SUCCESS, option}
+);
+
+export const loadOptionsSuccess = (options) => (
+	{type: types.LOAD_OPTIONS_SUCCESS, options}
+);
+
+export const  updateOptionSuccess = (id) => (
+	{type: types.UPDATE_OPTION_SUCCESS, id}
+);
+
+//api calls
+
+export const createPoll = (data) => {
+	return dispatch => {
+		return axios.post((API_ROOT+'/polls'), data)
+  		.then(res => {
+  			console.log('POST Request Response: ',res);
+			dispatch(createPollSuccess(res.data));
+  		})
+  		.catch(err => console.log('POST Request Error: ',err));
+	}
+}
+
+export const loadPolls = () => {
+	return dispatch => {
+		return axios.get((API_ROOT+'/polls'))
+		.then(res => {
+			console.log('GET Request Response: ',res);
+			dispatch(loadPollsSuccess(res.data));
+		})
+		.catch(err => console.log('GET Request Error: ',err));
+	}
+}
+
+export const createUser = (data) => {
+	return dispatch => {
+		return axios.post((API_ROOT+'/users'), data)
+  		.then(res => {
+  			console.log('POST Request Response: ',res);
+			dispatch(createUserSuccess(res.data));
+  		})
+  		.catch(err => console.log('POST Request Error: ',err));
+	}
+}
+
+export const loadUsers = () => {
+	return dispatch => {
+		return axios.get((API_ROOT+'/users'))
+		.then(res => {
+			console.log('GET Request Response: ',res);
+			dispatch(loadUsersSuccess(res.data));
+		})
+		.catch(err => console.log('GET Request Error: ',err));
+	}
+}
+
+export const createOption = (data) => {
+	return dispatch => {
+		return axios.post((API_ROOT+'/polloptions'), data)
+  		.then(res => {
+  			console.log('POST Request Response: ',res);
+			dispatch(createOptionSuccess(res.data));
+  		})
+  		.catch(err => console.log('POST Request Error: ',err));
+	}
+}
+
+export const loadOptions = (id,data) => {
+	return dispatch => {
+		return axios.get(API_ROOT+"/polloptions")
+		.then(res => {
+			console.log('GET Request Response: ',res);
+			dispatch(loadOptionsSuccess(res.data));
+		})
+		.catch(err => console.log('GET Request Error: ',err));
+	}
+}
+
+export const updateOption = (id,data) => {
+	return (dispatch)=>{
+		return axios.put((API_ROOT+"/polloptions/"+id), data)
+  		.then(res => {
+  			console.log('PUT Request Response: ',res);
+  			dispatch(updateOptionSuccess(id));
+  		})
+  		.catch(err => console.log('PUT Request Error: ',err));
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
