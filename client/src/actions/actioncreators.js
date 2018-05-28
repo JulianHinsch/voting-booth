@@ -1,5 +1,5 @@
 import * as types from './actiontypes';
-import { API_ROOT } from '../apiconfig';
+import { API_ROOT } from '../utils/apiconfig';
 import axios from 'axios';
 
 //old

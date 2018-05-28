@@ -7,11 +7,9 @@ const database = require('./database');
 
 const app = express();
 
-//middleware
 app.use(bodyParser());
 app.use(cors());
 
-//routes
 require('./routes')(app);
 
 //serve static assets in production
@@ -26,11 +24,9 @@ app.use((req,res,next) => {
 	next(err);
 });
 
-//server
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`listening on port:${port}`));
 
-//add default data
 database.seed();
 
 module.exports=app;

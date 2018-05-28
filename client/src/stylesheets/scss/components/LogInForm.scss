@@ -43,14 +43,15 @@
 
 .login-button {
 	width: 80%;
-	height: 30px;
-	background-color: #ddd;
-	border: 1px solid #aaa;
+	height: 40px;
+    background-color: #4b7bec;
+    color: white;
+    border: none;
 	margin-right: 10px;
-	font-size: 12px;
+	font-size: 14px;
 	&:hover {
 		cursor: pointer;
-		border: 1px solid #719ECE;
+		opacity: 0.9;
 	}
 }
 

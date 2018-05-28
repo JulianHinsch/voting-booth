@@ -3,7 +3,6 @@
   "author": "Julian Hinsch",
   "license": "MIT",
   "version": "1.0.0",
-  "description": "Full Stack Polling Application",
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js"

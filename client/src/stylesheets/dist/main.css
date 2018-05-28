@@ -182,6 +182,8 @@ input, textarea {
   width: 100%;
   font-size: 14px;
   line-height: 30px;
+  box-sizing: border-box;
+  padding-left: 5px;
   background-color: white;
   border: 1px solid #aaa; }
   .inputfield.invalid {
@@ -197,6 +199,7 @@ input, textarea {
   width: 100%;
   text-align: left;
   color: red;
+  padding-top: 5px;
   font-size: 12px;
   font-weight: bold; }
 
@@ -286,14 +289,15 @@ input, textarea {
 
 .login-button {
   width: 80%;
-  height: 30px;
-  background-color: #ddd;
-  border: 1px solid #aaa;
+  height: 40px;
+  background-color: #4b7bec;
+  color: white;
+  border: none;
   margin-right: 10px;
-  font-size: 12px; }
+  font-size: 14px; }
   .login-button:hover {
     cursor: pointer;
-    border: 1px solid #719ECE; }
+    opacity: 0.9; }
 
 .signup-link-container {
   font-size: 14px;
@@ -628,17 +632,18 @@ td {
 
 .signup-button {
   width: 80%;
-  height: 30px;
-  background-color: #ddd;
-  border: 1px solid #aaa;
+  height: 40px;
+  background-color: #4b7bec;
+  color: white;
+  border: none;
   margin-right: 10px;
-  font-size: 12px;
+  font-size: 14px;
   opacity: 0.5; }
   .signup-button.active {
     opacity: 1; }
     .signup-button.active:hover {
       cursor: pointer;
-      border: 1px solid #719ECE; }
+      opacity: 0.9; }
 
 .login-link-container {
   width: 90%;

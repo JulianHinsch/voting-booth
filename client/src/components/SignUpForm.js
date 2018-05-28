@@ -13,11 +13,9 @@ class SignUpForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			formData: {
-				username: "",
-	        	password: "",
-	        	password2: "",
-			},
+            username: "",
+            password: "",
+            password2: "",
 			usernameErrMsg: "",
 			passwordErrMsg: "",
 			password2ErrMsg: "",
@@ -31,64 +29,65 @@ class SignUpForm extends Component {
 
 	handleInputChange = (event) => {
 		event.preventDefault();
-		let formDataCopy = this.state.formData;
-		formDataCopy[event.target.name] = event.target.value;
-    	this.setState({formData: formDataCopy});
+        this.setState({[event.target.name]: event.target.value});
     	this.validateField(event.target.name);
     }
 
 	validateField = (fieldname) => {
-	  switch(fieldname){
-	    case 'username':
-	      if (this.state.formData.username==="") {
-	      	this.setState({usernameErrMsg:"This field is required."});
-	      } else {
-	      	this.setState({usernameErrMsg:""});
-	      }
-	      break;
-	    case 'password':
-	      if (this.state.formData.password==="") {
-	      	this.setState({passwordErrMsg:"This field is required."});
-	      } else if (this.state.formData.password.length<8) {
-	      	this.setState({passwordErrMsg:"Password must be at least 8 characters."});
-	      } else if (!/\d/.test(this.state.formData.password)) {
-	      	this.setState({passwordErrMsg:"Password must contain a number."});
-	      } else {
-	      	this.setState({passwordErrMsg:""});
-	      	if(this.state.formData.password2!=="") {
-	      		this.validateField('password2');
-	      	}
-	      }
-	      break;
-	    case 'password2':
-	      if (this.state.formData.password2==="") {
-	      	this.setState({password2ErrMsg:"This field is required."});
-	      } else if (this.state.formData.password2!==this.state.formData.password) {
-	      	this.setState({password2ErrMsg:"Passwords do not match."});
-	      } else {
-	      	this.setState({password2ErrMsg:""});
-	      }
-	      break;
-	    default:
-	      break;
-		}
+        switch(fieldname) {
+            case 'username':
+                if (this.state.username==="") {
+                    this.setState({usernameErrMsg:"This field is required."});
+                } else {
+                    this.setState({usernameErrMsg:""});
+                }
+                break;
+            case 'password':
+                if (this.state.password==="") {
+                    this.setState({passwordErrMsg:"This field is required."});
+                } else if (this.state.password.length<8) {
+                    this.setState({passwordErrMsg:"Password must be at least 8 characters."});
+                } else if (!/\d/.test(this.state.password)) {
+                    this.setState({passwordErrMsg:"Password must contain a number."});
+                } else {
+                    this.setState({passwordErrMsg:""});
+                    if(this.state.password2!=="") {
+                        this.validateField('password2');
+                    }
+                }
+                break;
+            case 'password2':
+                if (this.state.password2==="") {
+                    this.setState({password2ErrMsg:"This field is required."});
+                } else if (this.state.password2!==this.state.password) {
+                    this.setState({password2ErrMsg:"Passwords do not match."});
+                } else {
+                    this.setState({password2ErrMsg:""});
+                }
+                break;
+            default:
+                break;
+        }
 	}
 
 	canSubmit = () => {
-		let username = this.state.formData.username;
-		let password = this.state.formData.password;
-		let password2 = this.state.formData.password2;
-		if (username!=="" && password.length>7 && /\d/.test(password) && password2===password) {
-			return true;
+		if (this.state.username === "") {
+            return false;
+        } else if (this.state.password.length <= 7) {
+            return false;
+        } else if (!/\d/.test(this.state.password)) {
+            return false;
+        } else if (this.state.password2 !== this.state.password) {
+			return false;
 		}
-		return false;
+		return true;
 	}
 
    	handleSubmit = (event) => {
-      event.preventDefault();
-      if (this.canSubmit()) {
-      	this.props.handleSubmit(this.state.formData.username,this.state.formData.password);
-      }
+        event.preventDefault();
+        if (this.canSubmit()) {
+      	    this.props.handleSubmit(this.state.username,this.state.password);
+        }
     }
 
 	render = () => (
@@ -123,12 +122,17 @@ class SignUpForm extends Component {
 						validation={this.validateField}
 						errorMessage={this.state.password2ErrMsg} />
 					<div className="signup-button-container">
-						<button className={"signup-button "+(this.canSubmit() ? "active" : "")} type="submit" onClick={this.handleSubmit}>Create an Account</button>
+						<button 
+                            className={"signup-button "+(this.canSubmit() ? "active" : "")} 
+                            type="submit" 
+                            onClick={this.handleSubmit}>
+                            Create an Account
+                        </button>
 					</div>
 				</form>
 				<hr className="form-hr" />
 				<div className="login-link-container">
-					{"Already have a Voting Booth account? "} 
+					Already have a Voting Booth account?
 					<Link className="login-link" to="/login">Log in &#9656; </Link>
 				</div> 
 			</div>

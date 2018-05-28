@@ -8,7 +8,9 @@ input,textarea {
 .inputfield {
 	width: 100%;
 	font-size: 14px;
-	line-height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    padding-left: 5px;
 	background-color: white;
 	border: 1px solid #aaa; 
 	&.invalid {
@@ -26,7 +28,8 @@ input,textarea {
 	height: 15px;
 	width: 100%;
 	text-align: left;
-	color: red;
+    color: red;
+    padding-top: 5px;
 	font-size: 12px;
 	font-weight: bold;
 }

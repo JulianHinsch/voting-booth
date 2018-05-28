@@ -3,7 +3,7 @@
 Polling application with mock authentication. 
 
 Back End: Node.js, Express, Postgres, Sequelize
-Front End: React Router, Redux, Sass
+Front End: React, Redux, Sass
 
 ## Run it locally!
 
