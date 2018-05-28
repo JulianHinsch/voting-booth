@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     incrementOption: (pollId,optionId) => {
-    	dispatch(actions.incrementOption(pollId,optionId));
+    	dispatch(actions.updateOption(pollId,optionId));
     }
 });
 

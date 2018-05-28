@@ -14,7 +14,7 @@ $ git clone git@github.com:JulianHinsch/voting-booth.git
 $ cd voting-booth
 ```
 
-Make sure you have Postgres installed locally, create a database called "react_poll_db"
+Make sure you have Postgres installed locally, create a database called "voting_booth"
 
 Start the server
 

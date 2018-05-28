@@ -47,7 +47,7 @@ let defaultState = [
 
 const polls = (state = Immutable.List(defaultState), action) => {
   switch (action.type) {
-    case types.CREATE_POLL:
+    case types.CREATE_POLL_SUCCESS:
         let optionObjectArray = action.options.map((element)=>({
           idx: generateId(),
           answer: element,
@@ -60,7 +60,7 @@ const polls = (state = Immutable.List(defaultState), action) => {
           timeCreated: action.timeCreated,
           options: optionObjectArray,
         });
-    case types.INCREMENT_OPTION:
+    case types.UPDATE_OPTION_SUCCESS:
         let pollIndex = state.findIndex((i)=>(i.idx===action.pollId));
         let poll = state.get(pollIndex);
         let optionIndex = poll.options.findIndex((el)=>el.idx===action.optionId);

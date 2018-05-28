@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 
 const database = new Sequelize(process.env.DATABASE_URL);
 
-//models
 const User = database.define('user', {
   id: {
     type: database.Sequelize.UUID,

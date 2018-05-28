@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions/actioncreators.js';
-import SignUpForm from '../components/SignUpForm.js';
+import SignupForm from '../components/SignupForm.js';
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     handleSubmit: (username,password) => {
-      dispatch( actions.createUser(username,password));
-      ownProps.history.push('/');
+        dispatch(actions.createUser(username,password));
+        ownProps.history.push('/');
     }
-})
+});
 
-const SignUpFormContainer = connect(null, mapDispatchToProps)(SignUpForm);
+const SignupFormContainer = connect(null, mapDispatchToProps)(SignupForm);
 
-export default SignUpFormContainer;
+export default SignupFormContainer;
 

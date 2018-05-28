@@ -14,7 +14,7 @@ let defaultState = {
 
 const users = (state = Immutable.fromJS(defaultState), action) => {
   switch (action.type) {
-    case types.CREATE_USER:
+    case types.CREATE_USER_SUCCESS:
       state = state.set('loggedInUser',action.username);
     	return state.setIn(['userDataArray',state.get('userDataArray').size], 
       Immutable.Map({

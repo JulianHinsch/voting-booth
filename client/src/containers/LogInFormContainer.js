@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as actions from '../actions/actioncreators.js';
-import LogInForm from '../components/LogInForm.js';
+import LoginForm from '../components/LoginForm.js';
 
 const mapStateToProps = (state, ownProps) => ({
 	userDataList: state.users.get('userDataArray'),
@@ -13,6 +13,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     },
 });
 
-const LogInFormContainer = connect(mapStateToProps, mapDispatchToProps)(LogInForm);
+const LoginFormContainer = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 
-export default LogInFormContainer;
+export default LoginFormContainer;

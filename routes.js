@@ -1,10 +1,11 @@
 const router = require('express').Router();
 
+const users = require('./controllers/users.js');
+const polls = require('./controllers/polls.js');
+const polloptions = require('./controllers/polloptions.js');
+
 //REST http methods
-module.exports = (router) =>{
-    const users = require('./controllers/users.js');
-    const polls = require('./controllers/polls.js');
-    const polloptions = require('./controllers/polloptions.js');
+module.exports = (router) => {
   router.post('/api/users', users.add);
   router.get('/api/users/:username', users.findByUsername);
   router.post('/api/polls', polls.add);

@@ -13,7 +13,7 @@ const store = configureStore();
 
 ReactDOM.render(
 	<Provider store={store}>
-		<BrowserRouter basename="/votingbooth">
+		<BrowserRouter>
   			<App />
   		</BrowserRouter>
 	</Provider>, document.getElementById('root'));

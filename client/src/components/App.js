@@ -6,67 +6,52 @@ import JumbotronContainer from '../containers/JumbotronContainer.js';
 import PollListContainer from '../containers/PollListContainer.js';
 import PollContainer from '../containers/PollContainer.js';
 import PollFormContainer from '../containers/PollFormContainer.js';
-import LogInFormContainer from '../containers/LogInFormContainer.js';
-import SignUpFormContainer from '../containers/SignUpFormContainer.js';
-import Footer from './Footer.js';
+import LoginFormContainer from '../containers/LoginFormContainer.js';
+import SignupFormContainer from '../containers/SignupFormContainer.js';
 
 class App extends Component {
-
-  renderHomeLayout = () => (
-    <div>
-      <HeaderContainer />
-      <JumbotronContainer />
-    </div>
-  );
-
-  renderLogInLayout = () => (
-    <LogInFormContainer history={this.props.history}/>
-  );
-
-  renderSignUpLayout = () => (
-    <SignUpFormContainer history={this.props.history}/>
-  );
-
-  renderPollFormLayout = () => (
-    <div>
-      <HeaderContainer />
-      <PollFormContainer history={this.props.history}/>
-    </div>
-  );
-
-  renderPollListLayout = () => (
-    <div>
-      <HeaderContainer />
-      <PollListContainer />
-    </div>
-  );
-
-  renderMyPollsLayout = () => (
-      <div>
-        <HeaderContainer />
-        <PollListContainer />
-      </div>
-  );
-
-  renderPoll = () => (
-      <div>
-        <HeaderContainer />
-        <PollContainer />  
-      </div>
-  );
-
-  render = () => (
-    <div>
-      <Route exact path='/' render={this.renderHomeLayout} />
-      <Route path='/signup' render={this.renderSignUpLayout} />
-      <Route path='/login' render={this.renderLogInLayout} />
-      <Route path='/new' render={this.renderPollFormLayout} />
-      <Route exact path='/polls' render={this.renderPollListLayout} />
-      <Route path='/polls/:id' render={this.renderPoll} />
-      <Route path='/mypolls' render={this.renderMyPollsLayout} />
-      <Footer />
-    </div>
-  );
+    render = () => {
+        return (
+            <div>
+                <Route exact path='/' render={()=>(
+                    <div>
+                        <HeaderContainer />
+                        <JumbotronContainer />
+                    </div>
+                )}/>
+                <Route path='/signup' render={()=>(
+                    <SignupFormContainer history={this.props.history}/>
+                )}/>
+                <Route path='/login' render={()=>(
+                    <LoginFormContainer history={this.props.history}/>
+                )}/>
+                <Route path='/new' render={()=>(
+                    <div>
+                        <HeaderContainer/>
+                        <PollFormContainer history={this.props.history}/>
+                    </div>
+                )}/>
+                <Route exact path='/polls' render={()=>(
+                    <div>
+                        <HeaderContainer/>
+                        <PollListContainer/>
+                    </div>
+                )} />
+                <Route path='/polls/:id' render={()=>(
+                    <div>
+                        <HeaderContainer/>
+                        <PollContainer/>  
+                    </div>
+                )}/>
+                <Route path='/mypolls' render={()=>(
+                    <div>
+                        <HeaderContainer/>
+                        <PollListContainer/>
+                    </div>
+                )}/>
+            </div>
+        )
+    }
 }
 
 export default withRouter(App);
