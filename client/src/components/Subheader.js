@@ -5,17 +5,14 @@ import PropTypes from 'prop-types';
 class Subheader extends Component {
 
 	static propTypes = {
-		headerOpen: PropTypes.bool.isRequired,
 		logout: PropTypes.func.isRequired,
 		username: PropTypes.string.isRequired,
 	}
 
-	getOpenClass = () => (this.props.headerOpen ? " open" : "");
-
 	render = () => {
 		if (this.props.username!=="") {
 			return (
-				<div className={"subheader"+this.getOpenClass()}>
+				<div className="subheader">
 					<div className="subheader-button-container">
 						<span className="sub-username"><span className="greeting">Welcome, </span>{this.props.username}</span>
 						<button className="subheader-button logout" onClick={this.props.logout}>Log Out</button>
@@ -24,7 +21,7 @@ class Subheader extends Component {
 			);
 		} else {
 			return (
-				<div className={"subheader"+this.getOpenClass()}>
+				<div className="subheader">
 					<div className="subheader-button-container">
 						<Link to='/login'><button className="subheader-button login">Log In</button></Link>
 						<Link to='/signup'><button className="subheader-button signup">Sign Up</button></Link>

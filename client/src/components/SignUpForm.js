@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import InputField from './InputField.js';
 import TextLogo from './TextLogo.js';
 
-class SignUpForm extends Component {
+export default class SignUpForm extends Component {
 
 	static propTypes = {
 		handleSubmit: PropTypes.func.isRequired,
@@ -110,7 +110,6 @@ class SignUpForm extends Component {
 					<InputField 
 						name="password" 
 						type="password"
-						placeholder="At least 8 characters and 1 number" 
 						handleInputChange={this.handleInputChange} 
 						validation={this.validateField}
 						errorMessage={this.state.passwordErrMsg} />
@@ -133,11 +132,9 @@ class SignUpForm extends Component {
 				<hr className="form-hr" />
 				<div className="login-link-container">
 					Already have a Voting Booth account?
-					<Link className="login-link" to="/login">Log in &#9656; </Link>
+					<Link className="login-link" to="/login"> Log in &#9656; </Link>
 				</div> 
 			</div>
 		</div>
 	);
 }
-
-export default SignUpForm;

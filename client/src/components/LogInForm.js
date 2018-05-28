@@ -4,22 +4,21 @@ import { Link } from 'react-router-dom';
 import InputField from './InputField.js';
 import TextLogo from './TextLogo.js';
 
-class LogInForm extends Component {
+export default class LogInForm extends Component {
 
+    static propTypes = {
+        handleSubmit: PropTypes.func.isRequired,
+        userDataList: PropTypes.array.isRequired,
+    }
+    
 	constructor(props) {
 		super(props)
 		this.state = {
-			formData: {
-				username: "",
-	        	password: "",
-			},
+            username: "",
+            password: "",
       		usernameErrMsg: "",
       		passwordErrMsg: "",
 		}
-	}
-
-	static propTypes = {
-		handleSubmit: PropTypes.func.isRequired,
 	}
 
 	componentDidMount() {
@@ -29,52 +28,48 @@ class LogInForm extends Component {
  	
 	handleInputChange = (event) => {
 		event.preventDefault();
-		let formDataCopy = this.state.formData;
-		formDataCopy[event.target.name] = event.target.value;
-    	this.setState({formData: formDataCopy});
+    	this.setState({[event.target.name]: event.target.value});
     	this.validateField(event.target.name);
     }
 
     validateField = (fieldname) => {
 		switch(fieldname){
 			case 'username':
-			  if (this.state.formData.username==="") {
-			  	this.setState({usernameErrMsg:"This field is required."})
-			  } else {
-			  	this.setState({usernameErrMsg:""})
-			  }
-			  break;
+                if (this.state.username==="") {
+                    this.setState({usernameErrMsg:"This field is required."})
+                } else {
+                    this.setState({usernameErrMsg:""})
+                }
+                break;
 			case 'password':
-			  if (this.state.formData.password==="") {
-			  	this.setState({passwordErrMsg:"This field is required."});
-			  } else {
-			  	this.setState({passwordErrMsg:""});
-			  }
-			  break;
+                if (this.state.password==="") {
+                    this.setState({passwordErrMsg:"This field is required."});
+                } else {
+                    this.setState({passwordErrMsg:""});
+                }
+                break;
 			default:
-			  break;
+			    break;
 		}
 	}
 
     canSubmit = () => {
-      let username = this.state.formData.username;
-      let password = this.state.formData.password;
-      if (username!=="" && password!=="" && this.mockAuthenticate()) {
-      	return true;
-      }
-      return false;
+        if (this.state.username === "" ||  this.state.password === "") {
+            return false;
+        } else if (!this.mockAuthenticate()) {
+            return false;
+        }
+        return true;
     }
 
     mockAuthenticate = () => {
-    	let username = this.state.formData.username;
-    	let password = this.state.formData.password;
     	let users = this.props.userDataList;
     	let usernameRegistered = false;
     	let passwordCorrect = false;
-    	for (var i = 0; i < users.size; i++) {
-    		if(users.getIn([i,'username'])===username) {
+    	for (let i = 0; i < users.size; i++) {
+    		if(users.getIn([i,'username']) === this.state.username) {
     			usernameRegistered = true;
-    			if (users.getIn([i,'password'])===password) {
+    			if (users.getIn([i,'password']) === this.state.password) {
     				passwordCorrect = true;
     			};
     		}
@@ -95,10 +90,10 @@ class LogInForm extends Component {
     }
 
     handleSubmit = (event) => {
-      event.preventDefault();
-      if (this.canSubmit()) {
-      	this.props.handleSubmit(this.state.formData.username);
-      }
+        event.preventDefault();
+        if (this.canSubmit()) {
+      	    this.props.handleSubmit(this.state.username);
+        }
     }
 
 	render = () => (
@@ -130,12 +125,10 @@ class LogInForm extends Component {
 				</form>
 				<hr className="form-hr" />
 				<div className="signup-link-container">
-					{"New to Voting Booth? "}
-					<Link className="signup-link" to="/signup">Sign up &#9656;</Link>
+					New to Voting Booth?
+					<Link className="signup-link" to="/signup"> Sign up &#9656;</Link>
 				</div> 
 			</div>
 		</div>
 	);
 }
-
-export default LogInForm;

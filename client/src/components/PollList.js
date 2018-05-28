@@ -7,7 +7,6 @@ export default class PollList extends Component {
 	static propTypes = {
 		pollDataArray: PropTypes.object.isRequired,
 		filter: PropTypes.string.isRequired,
-		headerOpen: PropTypes.bool.isRequired,
 	}
 
 	static contextTypes = {
@@ -25,8 +24,6 @@ export default class PollList extends Component {
 		}
 		return "Polls";
 	}
-
-	getOpenClass = () => (this.props.headerOpen ? "open" : "");
 
 	renderPolls = () => {
 		let pollsToShow = this.props.pollDataArray.map((element) => {
@@ -46,7 +43,7 @@ export default class PollList extends Component {
 				return pollsToShow;
 			}
 		};
-		return (<div>No Polls Found.</div>);
+		return <div>No Polls Found.</div>;
 	}
 
 	render = () => {
@@ -54,7 +51,7 @@ export default class PollList extends Component {
 			return (<Redirect to="/login" />);
 		};
 		return (
-			<div className={"poll-list-container "+this.getOpenClass()}>
+			<div className="poll-list-container">
 				<div className="poll-list-header">{this.getTitle()}</div>
 				{this.renderPolls()}
 				<div className="back-link-container">

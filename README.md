@@ -40,3 +40,10 @@ Compile Sass code (only necessary if you wish to make changes)
 ```
 $ npm run sass
 ```
+
+## TODO: (Updated 5/28/18)
+
+- Don't track header open in react, only use styles
+- Don't track window width
+- Write tests
+- Combine Header and Subheader components

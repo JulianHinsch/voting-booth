@@ -5,7 +5,6 @@ import PollForm from '../components/PollForm.js';
 const mapStateToProps = (state) => {
 	return {
     	loggedInUser: state.users.get('loggedInUser'),
-    	headerOpen: state.ui.get('headerOpen'),
   	}
 }
 
@@ -16,7 +15,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		},
 	}
 }
-
 
 const PollFormContainer = connect(mapStateToProps, mapDispatchToProps)(PollForm);
 

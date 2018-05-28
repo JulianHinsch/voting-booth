@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, withRouter} from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import HeaderContainer from '../containers/HeaderContainer.js';
 import JumbotronContainer from '../containers/JumbotronContainer.js';

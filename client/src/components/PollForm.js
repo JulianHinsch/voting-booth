@@ -7,7 +7,6 @@ class PollForm extends Component {
 
 	static propTypes = {
 		handleSubmit: PropTypes.func.isRequired,
-		headerOpen: PropTypes.bool.isRequired,
 	}
 
 	constructor(props) {
@@ -140,7 +139,7 @@ class PollForm extends Component {
 			return (<Redirect to="/login" />);
 		} else {
 			return (
-				<div className={"poll-form-container "+(this.props.headerOpen ? "open" : "")}>
+				<div className="poll-form-container">
 					<form className="poll-form">
 						<h2 className="poll-form-header"> Create a new Poll! </h2>
 						<span className="input-label"> Ask something... </span>
