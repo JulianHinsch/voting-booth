@@ -1,6 +1,5 @@
-import users from './users.js';
 import polls from './polls.js';
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({users,polls});
+const rootReducer = combineReducers({polls});
 export default rootReducer;

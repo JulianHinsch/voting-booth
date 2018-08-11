@@ -1,10 +1,7 @@
-import rootReducer from '../reducers/index.js';
-import { createStore } from 'redux';
-
-/*export default (initialState) => {
-  return createStore(rootReducer, initialState);
-};*/
+import rootReducer from '../reducers/rootReducer.js';
+import { createStore, applyMiddleware } from 'redux';
+import { thunk } from 'redux-thunk';
 
 export default () => {
-    return createStore(rootReducer);
+    return createStore(rootReducer, applyMiddleware(thunk));
 };

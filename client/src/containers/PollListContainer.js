@@ -3,8 +3,7 @@ import PollList from '../components/PollList.js';
 
 const mapStateToProps = (state) => {
     return ({
-        filter: state.users.get('loggedInUser'),
-        pollDataArray: state.polls,
+        polls: state.polls,
     });
 }
 

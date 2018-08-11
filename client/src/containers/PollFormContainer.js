@@ -2,20 +2,14 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/actioncreators.js';
 import PollForm from '../components/PollForm.js';
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-    	loggedInUser: state.users.get('loggedInUser'),
-  	}
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-	return {
-		handleSubmit: (username,question,options) => {
-			dispatch( actions.createPoll(username,question,options));
+		upsertPoll: (id, poll) => {
+			dispatch(actions.upsertPoll(id, poll));
 		},
 	}
 }
 
-const PollFormContainer = connect(mapStateToProps, mapDispatchToProps)(PollForm);
+const PollFormContainer = connect(null, mapDispatchToProps)(PollForm);
 
 export default PollFormContainer;
