@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const database = require('./database');
+const database = require('./model/database');
 
 const app = express();
 
@@ -14,7 +14,7 @@ require('./routes')(app);
 
 //serve static assets in production
 if (process.env.NODE_ENV !== 'development') {
-  app.use(express.static(__dirname+'/client/build'));
+  app.use(express.static(__dirname+'../client/build'));
 }
 
 //general error handling middleware
