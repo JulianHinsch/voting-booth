@@ -22,17 +22,14 @@ const findAll = (req,res,next) => {
 	}).catch(next);
 }
 
-const findById = (req,res,next) => {
-	Poll.findOne({ where: {id: req.params.id}}).then(result => {
-		return res.send(result);
-	}).catch(next);
-}
-
-const upsertById = (req,res,next) => {
+const add = (req,res,next) => {
     console.log(req.body);
-	Poll.upsert(req.body, { where: {id: req.params.id}}, ).then(result => {
-		return res.send(200);
-	}).catch(next);
+	Poll.create(req.body).then(result => {
+        const optionData = req.body.options.map(option => Option.create(option));
+        return Promise.all(optionData);
+    }).then(result => {
+        return res.send(200);
+    }).catch(next);
 }
 
 const deleteById = (req,res,next) => {
@@ -44,7 +41,6 @@ const deleteById = (req,res,next) => {
 
 module.exports = {
 	findAll,
-	findById,
-    upsertById,
+	add,
 	deleteById,
 }

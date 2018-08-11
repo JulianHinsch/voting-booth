@@ -49,7 +49,7 @@ const sync = () => database.sync({ force: true });
 
 const seed = () => {
 
-    const polls = [
+    let polls = [
         { 
             id: 'a5f3221f-5794-4049-a0aa-731c55f1cbf5', 
             question: 'Which came first: the chicken or the egg?', 
@@ -60,7 +60,7 @@ const seed = () => {
         },
     ];
 
-    const options = [
+    let options = [
         { 
             id: 'f46fadf1-f3e3-461f-abcf-71b3b0d4028f',
             answer: 'Chicken', 
@@ -87,12 +87,12 @@ const seed = () => {
     ];
 
     return sync().then(() => {
-        const seedPollData = polls.map(poll => Poll.create({
+        let seedPollData = polls.map(poll => Poll.create({
             id: poll.id,
             question: poll.question,
         }));
         return Promise.all(seedPollData).then(() => {
-            const seedOptionData = options.map(option => Option.create({
+            let seedOptionData = options.map(option => Option.create({
                 id: option.id,
                 answer: option.answer,
                 votes: option.votes,

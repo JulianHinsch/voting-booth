@@ -27,6 +27,13 @@ app.use((req,res,next) => {
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`listening on port:${port}`));
 
-database.seed();
+console.log(process.env.NODE_ENV)
+
+if (process.env.NODE_ENV === 'development') {
+    database.seed();
+} else {
+    database.sync();
+}
+
 
 module.exports=app;

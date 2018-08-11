@@ -6,11 +6,12 @@ const findAll = (req,res,next) => {
 	}).catch(next);
 }
 
-const upsertById = (req,res,next) => {
-	Option.upsert(req.body, { where: {id: req.params.id}}).then(result => {
+const updateById = (req,res,next) => {
+	Option.update(req.body, { where: {id: req.params.id}}).then(result => {
 		return res.send(200);
 	}).catch(next);
 }
+
 const deleteById = (req,res,next) => {
     Option.destroy({where: {id: req.params.id}}).then(result => {
         return res.send(200);
@@ -19,6 +20,6 @@ const deleteById = (req,res,next) => {
 
 module.exports = {
     findAll,
-    upsertById,
+    updateById,
     deleteById,
 }
