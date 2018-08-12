@@ -6,84 +6,60 @@ import Option from '../components/Option.js';
 export default class Poll extends Component {
 
 	static propTypes = {
-		pollDataArray: PropTypes.object.isRequired,
-		incrementOption: PropTypes.func.isRequired,
-	}
-
-	static contextTypes = {
-    	router: PropTypes.object,
-    	location: PropTypes.object
+		poll: PropTypes.object.isRequired,
+		updateOption: PropTypes.func.isRequired,
 	}
 
 	constructor(props) {
 		super(props);
-		this.state = {voted: false, showThanks: false}
-	}
-
-	getPollData = () => {
-		let idOfPollToFind = this.context.router.route.match.params.id;
-		let index = this.props.pollDataArray.findIndex(i => i.idx===idOfPollToFind);
-		return this.props.pollDataArray.get(index);
+		this.state = {
+            voted: false,
+            showThanks: false,
+        }
 	}
 	
-	calculatePercentage = (optionPopularity) => {
-		let total=0;
-		for (var i = 0; i < this.getPollData().options.length; i++) {
-			total+=this.getPollData().options[i].popularity;
-		};
-		if (total!==0) {
-			return ((optionPopularity/total)*100).toFixed(0)+"%";
-		}
-		return 0+"%";
+	calculatePercentage = (votes) => {
+		let total = this.props.poll.get('options').reduce((total,option) => {
+            total += option.get('votes')
+        }, 0);
+		return total === 0 ? total : ((votes/total)*100).toFixed(0);
 	}
 
-	incrementOption = (optionId) => {
-		if (this.state.voted === false) {
-			this.props.incrementOption(this.context.router.route.match.params.id,optionId);
-			this.setState({voted: true});
-			this.setState({showThanks: true});
+	handleVote = (option) => {
+		if (!this.state.voted) {
+			this.props.updateOption(option.get('id'), option.set('votes', option.get('votes')+1));
+			this.setState({voted: true, showThanks: true});
 		}
 	}
 
-	sortOptions = (options) => (options.sort((option1,option2) => (option1.popularity<=option2.popularity)))
+	sortOptionsByVotes = (options) => {
+        return options.sort((option1,option2) => option1.get('votes') <= option2.get('votes'));
+    }
 
-	renderAllOptions = () => (this.sortOptions(
-		this.getPollData().options).map(element=>(
-			<Option
-			 key={element.idx}
-			 idx={element.idx}
-			 answer={element.answer}
-			 popularity={element.popularity}
-			 percentage={this.calculatePercentage(element.popularity)}
-			 incrementOption = {this.incrementOption} />
-	)));
-
-	hideThanks = () => {this.setState({showThanks: false})}
-
-	render = () => {
+	render() {
         return (
             <div>
-                <div className="poll-detail-view">
-                    <div className="poll-detail-header">
-                        {this.getPollData().question}
-                    </div>
-                    <div className="poll-detail-info">
-                        Asked by {this.getPollData().username} on {this.getPollData().timeCreated.toDateString()}
-                    </div>
-                    <table className={"poll-options-table "+(this.state.voted ? "voted" : "")}>
+                <div className="poll-detail">
+                    <h1>{this.props.poll.get('question')}</h1>
+                    <h4>{new Date(this.props.poll.get('dateCreated')).toDateString()}</h4>
+                    <table>
                         <tbody>
-                            {this.renderAllOptions()}
+                        {this.props.poll.get('options').map(option => (
+                            <Option
+                                key={option.get('id')}
+                                option={option}
+                                percentage={this.calculatePercentage(option.get('votes'))}
+                                handleVote={this.handleVote}/>
+                            ))}
                         </tbody>
                     </table>
-                    <div className="back-link-container">
-                        <Link to="/polls" className="back-link"> &#9666; All Polls </Link>
-                    </div>
+                    <Link to="/polls" className="back-link"> &#9666; All Polls </Link>
                 </div>
-                <div className={"poll-thank-you-container "+(this.state.showThanks ? "visible" : "")}>
+                <div className={'thanks'} style={this.state.showThanks ? null : {display: 'none'}}>
                     Thanks! Your vote has been recorded.
-                    <div className="poll-thank-you-x" onClick={this.hideThanks}>
+                    <button onClick={() => this.setState({showThanks: false})}>
                         &#x2715;
-                    </div>
+                    </button>
                 </div>
             </div>
         )

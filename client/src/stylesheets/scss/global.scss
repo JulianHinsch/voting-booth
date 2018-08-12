@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+html,body {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.content {
+    width: 90%;
+    max-width: 600px;
+    border: 1px solid #bbb;
+    margin: 25vh auto;    
+}
+
+$light-blue: #4b7bec;

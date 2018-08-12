@@ -4,28 +4,24 @@ import PropTypes from 'prop-types';
 export default class Option extends Component {
 
 	static propTypes = {
-		answer: PropTypes.string.isRequired,
-		popularity: PropTypes.number.isRequired,
-		percentage: PropTypes.string.isRequired,
-		incrementOption: PropTypes.func.isRequired,
-		idx: PropTypes.string.isRequired,
-	}
+        option: PropTypes.object.isRequired,
+        percentage: PropTypes.number.isRequired,
+        handleVote: PropTypes.func.isRequired,
+    }
 
-	increment = () => {
-		this.props.incrementOption(this.props.idx);
-	}
-
-	render = () => (
-		<tr className={"poll-option"} onClick={this.increment}>
-			<td className="poll-option-text">
-				{this.props.answer}
-			</td>
-			<td className="poll-option-data">
-				{this.props.popularity} votes
-				<div className="poll-option-percentage">
-					{this.props.percentage}
-				</div>
-			</td>
-		</tr>
-	);
+	render () {
+        return (
+            <tr className='option' onClick={() => this.props.handleVote(this.props.option)}>
+                <td>
+                    {this.props.option.get('answer')}
+                </td>
+                <td>
+                    {this.props.option.get('votes')} votes
+                </td>
+                <td>
+                    {this.props.percentage}%
+                </td>
+            </tr>
+        )
+    }
 }

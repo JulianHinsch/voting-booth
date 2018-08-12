@@ -7,14 +7,14 @@ import Poll from '../components/Poll.js'
 const mapStateToProps = (state, ownProps) => {
     console.log(ownProps.match.params.id);
     return ({
-        poll: state.polls.find(poll => poll.get('id') === ownProps.match.params.id),
+        poll: state.polls.get('items').find(poll => poll.get('id') === ownProps.match.params.id),
     })
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return ({
-        upsertOption: (id, option) => {
-            dispatch(actions.upsertOption(id, option));
+        updateOption: (id, option) => {
+            dispatch(actions.updateOption(id, option));
         }
     })   
 }

@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import TextLogo from './TextLogo.js';
-import Logo from './Logo.js';
 //import Hamburger from './Hamburger.js';
 
 export default class Header extends Component {
 	render() {
         return (
             <header>
-                <div className="inner">
-                    <div className="logo-container">
-                        <Link to="/" className="logo-small"><Logo /></Link>
-                        <Link to="/" className="logo-large"><TextLogo /></Link>
-                    </div>
-                </div>
+                <Link to="/" className="logo-container">
+                    <img 
+                        className='logo'
+                        src={require('../assets/logo.png')} 
+                        alt="Voting Booth" />
+                    <img 
+                        className='text-logo'
+                        src={require('../assets/textlogo.png')} 
+                        alt="Voting Booth"/>
+                </Link>
             </header>
         )
     }

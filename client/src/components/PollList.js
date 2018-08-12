@@ -1,62 +1,40 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class PollList extends Component {
 
 	static propTypes = {
-		pollDataArray: PropTypes.object.isRequired,
-		filter: PropTypes.string.isRequired,
+		polls: PropTypes.object.isRequired,
 	}
 
-	static contextTypes = {
-    	router: PropTypes.object,
-    	location: PropTypes.object
+	componentDidMount() {
+		document.title = 'Voting Booth | Polls';
 	}
 
-	componentDidMount = () => {
-		document.title="Voting Booth | "+this.getTitle();
-	}
-
-	getTitle = () => {
-		if (this.context.router.route.location.pathname==="/mypolls") {
-			return "My Polls";
-		}
-		return "Polls";
-	}
-
-	renderPolls = () => {
-		let pollsToShow = this.props.pollDataArray.map((element) => {
-			if (this.getTitle()==="Polls" || element.username===this.props.filter) {
-				return (
-					<Link className={"poll-link"} to={"/polls/"+element.idx} key={element.idx}>
-						<div className="poll-list-view">
-							{element.question}
-						</div>
-					</Link>
-				);
-			}
-			return null;
-		});
-		for (var i = 0; i < pollsToShow.size; i++) {
-			if (pollsToShow.get(i)!==null) {
-				return pollsToShow;
-			}
-		};
-		return <div>No Polls Found.</div>;
-	}
-
-	render = () => {
-		if (this.getTitle()==="My Polls" && this.props.filter==="") {
-			return (<Redirect to="/login" />);
-		};
+	render() {
 		return (
-			<div className="poll-list-container">
-				<div className="poll-list-header">{this.getTitle()}</div>
-				{this.renderPolls()}
-				<div className="back-link-container">
-					<Link to="/" className="back-link"> &#9666; Back </Link>
-				</div>
+			<div className="content poll-list">
+				<h1>Polls</h1>
+                {this.props.polls.size > 0 ? this.props.polls.map(poll => (
+                    <Link
+                        to={`/polls/${poll.get('id')}`}
+                        key={poll.get('id')}>
+                            <div className='poll'>
+                                {poll.get('question')}
+                            </div>
+                    </Link>
+                )) : (
+                    <div className='poll'>No Polls</div>
+                )}
+                <div className='link-container'>
+                    <div className='back'>
+                        &#9666; <Link to="/">Back</Link>
+                    </div>
+                    <div className='add-a-poll'>
+                        <Link to="/new">Add a Poll</Link> &#9656; 
+                    </div>
+                </div>
 			</div>
 		);
 	}

@@ -1,7 +1,7 @@
 import * as types from '../actions/actiontypes';
 import Immutable from 'immutable';
 
-const generateId = () => {
+const generateUUID = () => {
     var uuidv1 = require('uuid/v1');
     return uuidv1();
 }
@@ -11,32 +11,32 @@ let defaultState = {
     error: null,
     items: [
         {
-            id: generateId(),
+            id: generateUUID(),
             question: "Why did the chicken cross the road?",
             options: [
                 {
-                    id: generateId(),
+                    id: generateUUID(),
                     answer: "To get to the other side.",
                     votes: 504,
                 },
                 {
-                    id: generateId(),
+                    id: generateUUID(),
                     answer: "Why not?",
                     votes: 320,
                 },
             ],
         },
         {
-            id: generateId(),
+            id: generateUUID(),
             question: "Guess what?",
             options: [
                 {
-                    id: generateId(),
+                    id: generateUUID(),
                     answer: "Who?",
                     votes: 124,
                 },
                 {
-                    id: generateId(),
+                    id: generateUUID(),
                     answer: "What?",
                     votes: 0,
                 },
@@ -92,14 +92,12 @@ const polls = (state = Immutable.fromJS(defaultState), action) => {
         case types.UPDATE_OPTION_START:
             return state.set('loading',true);
         case types.UPDATE_OPTION_SUCCESS:
-            //find poll that contains option to update
-            pollThatContainsOption = polls.find(poll => {
-                return poll.get('options').some(option => {
-                    return option.get('id') === action.option.id;
-                })
+            //TODO test
+            let pollIndex = polls.findIndex(poll => {
+                return poll.get('id') === action.option.pollId;
             });
-            //push updated or new poll to state
-            polls = polls.push(Immutable.fromJS(action.poll));
+            let optionIndex = polls.getIn([pollIndex,'options']).findIndex(option => option.id = action.option.id);
+            polls = polls.updateIn([pollIndex,'options',optionIndex], Immutable.fromJS(action.option));
             return state.merge({
                 items: polls,
                 loading: false,
