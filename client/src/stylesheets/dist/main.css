@@ -18,6 +18,10 @@ a {
   border: 1px solid #bbb;
   margin: 25vh auto; }
 
+.error {
+  top: 35vh;
+  border: none; }
+
 /* Hamburger by Jon Suh https://github.com/jonsuh */
 .hamburger {
   position: absolute;
@@ -189,6 +193,9 @@ input, textarea {
   cursor: pointer; }
   .jumbotron button:hover {
     opacity: 0.5; }
+
+.loading {
+  margin: 35vh auto; }
 
 tr {
   width: 100%;
@@ -414,7 +421,8 @@ td {
   border: 1px solid #bbb;
   background-color: #ddd;
   margin: 20px auto;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  color: blue; }
   .poll:hover {
     opacity: 0.8; }
 

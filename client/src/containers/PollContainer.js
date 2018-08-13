@@ -2,10 +2,11 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
 import * as actions from '../actions/actioncreators.js';
-import Poll from '../components/Poll.js'
+import Poll from '../components/Poll.js';
 
 const mapStateToProps = (state, ownProps) => {
     console.log(ownProps.match.params.id);
+    console.log(state.polls.get('items'));
     return ({
         poll: state.polls.get('items').find(poll => poll.get('id') === ownProps.match.params.id),
     })
