@@ -1,103 +1,64 @@
-.poll-form-container {
-	width: 100%;
-	border: none;
-	position: relative;
-	margin: 30px auto 0px auto;
-	border-radius: 10px;
-	color: black;
-	margin-top: 100px;
-	z-index: 0;
-	transition-property: margin-top;
-	transition-duration: 0.2s;
-	transition-timing-function: ease;
-	&.open {
-		margin-top: 180px;
-	}
+.poll-form-container h1 {
+    width: 90%;
+    margin: 30px auto 20px auto;
 }
 
-.poll-form-header {
-	font-size: 20px;
-	text-align: left;
-	font-weight: normal;
-}
-
-.poll-form {
-	width: 90%;
-	margin: auto;
-}
-
-.error-message-container {
+.poll-form-container .err-msg {
 	height: 15px;
 	width: 100%;
-	text-align: left;
+    text-align: left;
 	color: red;
 	font-size: 12px;
 	font-weight: bold;
 }
 
-.poll-form .button-container {
-	width: 220px;
+.poll-form-container form {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+}
+
+.poll-form-container label {
+    float: left;
+    margin: 10px 0px;
+}
+
+.poll-form-container input {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding-left: 5px;
+    margin: 10px 0px;
+    font-size: 14px;
+}
+
+.poll-form-container .button-container {
+    width: 240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
 	height: 60px;
-	margin: auto;
-	padding-top: 10px;
-	padding-bottom: 20px;
-}
-
-.create-poll-button {
-	position: relative;
-	height: 40px;
-	line-height: 40px;
-	width: 100px;
-	border-radius: 5px;
-	background-color: $light-blue;
-	border: none;
-	font-size: 14px;
-	color: white;
-	float: left;
-	opacity: 0.5;
-	&.active {
-		opacity: 1;
-		line-height: 35px;
-		&:hover {
-			opacity: 0.7;
-			cursor: pointer;
-		}
-	}
-}
-
-.cancel-button {
-	height: 40px;
-	width: 100px;
-	background-color: transparent;
-	border: 1px solid $light-blue;
-	border-radius: 5px;
-	font-size: 14px;
-	color: $light-blue;
-	float: right;
-	&:hover {
-		opacity: 0.7;
-		cursor: pointer;
-	}
-}
-
-@media (min-width: 300px) {
-	.poll-form-header {
-		font-size: 30px;
-	}
-}
-
-@media (min-width: 500px) {
-	.poll-form-container {
-		border: 1px solid #ddd;
-		width: 500px;
-		margin-top: 150px;
-		&.open {
-			margin-top: 230px;
-		}
-	}
-
-	.poll-form {
-		width: 90%;
-	}
-	
+	margin: 0px auto 10px auto;
+	padding: 10px 0px;
+    & button {
+        width: 110px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 2px solid $brand-blue;
+        background-color: $brand-blue;
+        color: white;
+        font-size: 14px;
+        &:not(.disabled):hover {
+            opacity: 0.7;
+        }
+        &.cancel {
+            background-color: white;
+            color: $brand-blue;
+        }
+        &.disabled {
+            cursor: default;
+            opacity: 0.5;
+        }
+    }
 }

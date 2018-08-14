@@ -1,172 +1,120 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
-import InputField from './InputField.js';
+import { Link } from 'react-router-dom';
 
-class PollForm extends Component {
+export default class PollForm extends Component {
 
 	static propTypes = {
-		handleSubmit: PropTypes.func.isRequired,
+		createPoll: PropTypes.func.isRequired,
 	}
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			formData: {
-				question: "",
-				optionsArray: ["","",""],
-			},
+			question: "",
+			options: ["","",""],
         	questionErrMsg: "",
-    		optionErrMsg: "",
+            optionsErrMsg: "",
+            canSubmit: false,
 		}
 	}
 
 	componentDidMount() {
 		document.title="Voting Booth | New Poll";
+    }
+
+    handleSubmit = (event) => {
+		event.preventDefault();
+		this.props.createPoll(this.state.question, this.state.options.filter(el => el!==""));
+		this.props.history.push('/polls');
+	}
+    
+    handleQuestionChange = (event) => {
+        this.setState({[event.target.name]:event.target.value});
+        this.validateQuestion(event.target.value);
+    }
+
+    handleOptionChange = (event) => {
+    	let nextOptions = this.state.options;
+        nextOptions[event.target.name] = event.target.value;
+        this.setState({options: nextOptions})
+    	this.validateOptions(nextOptions);
+    }
+
+	validateQuestion = (question) => {
+		this.setState({questionErrMsg: question==="" ? "This field is required." : ""});     
 	}
 
-	handleQuestionInputChange = (event) => {
-		event.preventDefault();
-		let formDataCopy = this.state.formData;
-		formDataCopy[event.target.name] = event.target.value;
-    	this.setState({formData: formDataCopy});
-    	this.validateQuestion();
-    }
-
-    handleOptionInputChange = (event) => {
-    	event.preventDefault();
-    	let formDataCopy = this.state.formData;
-    	formDataCopy.optionsArray[event.target.name] = event.target.value;
-    	this.setState({formData: formDataCopy});
-    	this.validateOptions();
-    }
-
-	validateQuestion = () => {
-	  if (this.state.formData.question==="") {
-		this.setState({questionErrMsg: "This field is required."});     
-	  } else {
-		this.setState({questionErrMsg: ""});
-	  }
-	}	
-
-	validateOptions = () => {
-		var count=0;
-		for (var i = 0; i < this.state.formData.optionsArray.length; i++) {
-			if(this.state.formData.optionsArray[i]!=="") {
-			  count++;
-			}
-		};
-		if (count<2) {
-			this.setState({optionErrMsg: "Please enter at least two options."});     
-		} else {
-			this.setState({optionErrMsg: ""});
-		}
+	validateOptions = (options) => {
+        let count = 0;
+        options.forEach(option => {
+            if (option !== "") {
+                count++;
+            }
+        });
+		if (count < 2) {
+            this.setState({optionErrMsg: count < 2 ? "Please enter at least two options." : ""});
+        }    
 	}
 
 	addAnswer = () => {
-		var formDataCopy = this.state.formData;
-		formDataCopy.optionsArray.push("");
-		this.setState({formData: formDataCopy});
-	}
-
-	renderAnswers = () => {
-		var inputs = [];
-		var numOfOptions = this.state.formData.optionsArray.length-1;
-		for (var i = 0; i <= numOfOptions; i++) {
-			inputs.push(i);
-		};
-		return inputs.map((el)=>{
-			if (el!==numOfOptions) {
-				return (<InputField
-						key={el}
-						name={el.toString()}
-						type="text"
-						placeholder=" Add an option..."
-						errorMessage=""
-						validation={this.validateOptions}
-						handleInputChange={this.handleOptionInputChange} />
-				);
-			} else {
-				return (
-					<InputField
-						key={el}
-						name={el.toString()}
-						type="text"
-						validation={this.validateOptions}
-						placeholder=" Add an option..."
-						handleInputChange={this.handleOptionInputChange}
-						errorMessage=""
-						onFocus={this.addAnswer} />
-				);	
-			}
-		});
+        let nextOptions = this.state.options;
+        nextOptions.push("");
+		this.setState({options: nextOptions});
 	}
 
 	canSubmit = () => {
-		var options = this.state.formData.optionsArray;
-		if (this.state.formData.question!=="") {
-			let count=0;
-		  for (var i = 0; i < options.length; i++) {
-		    if(options[i]!=="") {
-		      count++;
-		    }
-		  };
-		  if (count<2) {
-		  	return false;
-		  }
-		} else {
-		  return false;
-		}
-		return true;
+        if (this.state.question==="") {
+            return false;
+        }
+		let count=0;
+		this.state.options.forEach(option => {
+            if (option !== "") {
+                count ++;
+            }
+        })
+		return count > 2;
 	}
 
-	renderSubmitButton = () => {
-		if (this.canSubmit()) {
-			return(<button className="create-poll-button active" type="submit" onClick={this.handleSubmit}> Create Poll </button>);
-		} else {
-			return(<div className="create-poll-button"> Create Poll </div>);
-		}
-	}
-
-	handleSubmit = (event) => {
-		event.preventDefault();
-		this.props.handleSubmit(this.props.loggedInUser,this.state.formData.question,this.state.formData.optionsArray.filter(i => i!==""));
-		this.props.history.push('/mypolls');
-	}
-
-	render = () => {
-		if (this.props.loggedInUser==="") {
-			return (<Redirect to="/login" />);
-		} else {
-			return (
-				<div className="poll-form-container">
-					<form className="poll-form">
-						<h2 className="poll-form-header"> Create a new Poll! </h2>
-						<span className="input-label"> Ask something... </span>
-						<InputField
-							name="question"
-							type="textarea"
-							handleInputChange={this.handleQuestionInputChange}
-							errorMessage={this.state.questionErrMsg}
-							validation={this.validateQuestion}
-							autofocus={"autofocus"} />
-						<span className="input-label"> Options </span>
-						<div className="answer-container">
-							{this.renderAnswers()}
-							<div className="error-message-container">
-								{this.state.optionErrMsg}
-							</div>
-						</div>
-						<hr className="form-hr" />
-						<div className="button-container">
-							{this.renderSubmitButton()}
-							<Link to="/"><button className="cancel-button"> Cancel </button></Link>
-						</div>
-					</form>
-				</div>
-			);
-		}
+	render() {
+        let count = -1;
+        return (
+            <div className='poll-form-container content'>
+                <h1> Create a new Poll! </h1>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor='question'> Ask something... </label>
+                    <input
+                        name='question'
+                        type='textarea'
+                        onChange={this.handleQuestionChange}
+                        autoFocus/>
+                    <div className='err-msg'>{this.state.questionErrMsg}</div>
+                    <div className='options'>
+                        <label id='options'>Options</label>
+                        {this.state.options.map(option => {
+                            count++;
+                            return (
+                                <input
+                                    key={count} 
+                                    type='text'
+                                    name={count}
+                                    aria-labelledby={'options'}
+                                    onChange={this.handleOptionChange}/>
+                            )
+                        })}
+                        <div className="err-msg">{this.state.optionErrMsg}</div>
+                    </div>
+                    <div className="button-container">
+                        <Link to="/"><button className="cancel"> Cancel </button></Link>
+                        <button 
+                            type={this.state.canSubmit ? 'submit': ''}
+                            className={`submit-button ${this.state.canSubmit ? '' : 'disabled'}`}
+                            onSubmit={this.state.canSubmit ? this.handleSubmit : null}>
+                            Create Poll!
+                        </button>
+                    </div>
+                </form>
+            </div>
+        );
 	}
 }
-
-export default PollForm;

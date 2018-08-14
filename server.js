@@ -4,9 +4,11 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const database = require('./model/database');
+const sanitize = require('sanitize').middleware;
 
 const app = express();
 
+app.use(sanitize);
 app.use(bodyParser());
 app.use(cors());
 

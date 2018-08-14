@@ -18,8 +18,15 @@ a {
 .content {
     width: 90%;
     max-width: 600px;
-    border: 1px solid #bbb;
-    margin: 25vh auto;    
+    margin: 20vh auto;
+    transition: margin 0.2s; 
 }
 
-$light-blue: #4b7bec;
+@media(min-width: 768px) {
+    .content {
+        border: 1px solid #bbb;
+        margin: 25vh auto;
+    }
+}
+
+$brand-blue: #4b7bec;

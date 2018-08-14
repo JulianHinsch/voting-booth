@@ -15,94 +15,16 @@ a {
 .content {
   width: 90%;
   max-width: 600px;
-  border: 1px solid #bbb;
-  margin: 25vh auto; }
+  margin: 20vh auto;
+  transition: margin 0.2s; }
 
+@media (min-width: 768px) {
+  .content {
+    border: 1px solid #bbb;
+    margin: 25vh auto; } }
 .error {
   top: 35vh;
   border: none; }
-
-/* Hamburger by Jon Suh https://github.com/jonsuh */
-.hamburger {
-  position: absolute;
-  top: 0px;
-  right: 30px;
-  display: inline-block;
-  cursor: pointer;
-  transition-property: opacity, filter;
-  transition-duration: 0.15s;
-  transition-timing-function: linear;
-  font: inherit;
-  text-transform: none;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  margin: 0;
-  overflow: visible; }
-  .hamburger:hover {
-    opacity: 0.5; }
-
-.hamburger-box {
-  width: 28px;
-  height: 16px;
-  display: inline-block;
-  position: relative; }
-
-.hamburger-inner {
-  display: block;
-  top: 50%;
-  margin-top: -2px; }
-
-.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-  width: 26px;
-  height: 3px;
-  background-color: #4b7bec;
-  border-radius: 4px;
-  position: absolute;
-  transition-property: transform;
-  transition-duration: 0.15s;
-  transition-timing-function: ease; }
-
-.hamburger-inner::before, .hamburger-inner::after {
-  content: "";
-  display: block; }
-
-.hamburger-inner::before {
-  top: -9px; }
-
-.hamburger-inner::after {
-  bottom: -9px; }
-
-/* Reverse Vortex Animation */
-.hamburger--vortex-r .hamburger-inner {
-  transition-duration: 0.2s;
-  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
-
-.hamburger--vortex-r .hamburger-inner::before, .hamburger--vortex-r .hamburger-inner::after {
-  transition-duration: 0s;
-  transition-delay: 0.1s;
-  transition-timing-function: linear; }
-
-.hamburger--vortex-r .hamburger-inner::before {
-  transition-property: top, opacity; }
-
-.hamburger--vortex-r .hamburger-inner::after {
-  transition-property: bottom, transform; }
-
-.hamburger--vortex-r.open .hamburger-inner {
-  transform: rotate(-765deg);
-  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
-
-.hamburger--vortex-r.open .hamburger-inner::before, .hamburger--vortex-r.open .hamburger-inner::after {
-  transition-delay: 0s; }
-
-.hamburger--vortex-r.open .hamburger-inner::before {
-  top: 0;
-  opacity: 0; }
-
-.hamburger--vortex-r.open .hamburger-inner::after {
-  bottom: 0;
-  transform: rotate(-90deg); }
 
 header {
   position: fixed;
@@ -136,37 +58,6 @@ header {
 
   .text-logo {
     display: block; } }
-input, textarea {
-  padding: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  border: 1px solid #bbb; }
-
-.inputfield {
-  width: 100%;
-  font-size: 14px;
-  line-height: 30px;
-  box-sizing: border-box;
-  padding-left: 5px;
-  background-color: white;
-  border: 1px solid #aaa; }
-  .inputfield.invalid {
-    background-color: pink;
-    border: 1px solid red; }
-  .inputfield:focus {
-    background-color: white;
-    border: 1px solid #aaa;
-    box-shadow: 0px 0px 5px 1px #aaa; }
-
-.error-message {
-  height: 15px;
-  width: 100%;
-  text-align: left;
-  color: red;
-  padding-top: 5px;
-  font-size: 12px;
-  font-weight: bold; }
-
 .jumbotron {
   padding: 30px 0px 50px 0px; }
 
@@ -323,31 +214,11 @@ td {
 @media (min-width: 750px) {
   .poll-detail-view, .poll-thank-you-container {
     width: 600px; } }
-.poll-form-container {
-  width: 100%;
-  border: none;
-  position: relative;
-  margin: 30px auto 0px auto;
-  border-radius: 10px;
-  color: black;
-  margin-top: 100px;
-  z-index: 0;
-  transition-property: margin-top;
-  transition-duration: 0.2s;
-  transition-timing-function: ease; }
-  .poll-form-container.open {
-    margin-top: 180px; }
-
-.poll-form-header {
-  font-size: 20px;
-  text-align: left;
-  font-weight: normal; }
-
-.poll-form {
+.poll-form-container h1 {
   width: 90%;
-  margin: auto; }
+  margin: 30px auto 20px auto; }
 
-.error-message-container {
+.poll-form-container .err-msg {
   height: 15px;
   width: 100%;
   text-align: left;
@@ -355,58 +226,49 @@ td {
   font-size: 12px;
   font-weight: bold; }
 
-.poll-form .button-container {
-  width: 220px;
-  height: 60px;
-  margin: auto;
-  padding-top: 10px;
-  padding-bottom: 20px; }
+.poll-form-container form {
+  width: 90%;
+  max-width: 400px;
+  margin: auto; }
 
-.create-poll-button {
-  position: relative;
-  height: 40px;
-  line-height: 40px;
-  width: 100px;
-  border-radius: 5px;
-  background-color: #4b7bec;
-  border: none;
-  font-size: 14px;
-  color: white;
+.poll-form-container label {
   float: left;
-  opacity: 0.5; }
-  .create-poll-button.active {
-    opacity: 1;
-    line-height: 35px; }
-    .create-poll-button.active:hover {
-      opacity: 0.7;
-      cursor: pointer; }
+  margin: 10px 0px; }
 
-.cancel-button {
-  height: 40px;
-  width: 100px;
-  background-color: transparent;
-  border: 1px solid #4b7bec;
-  border-radius: 5px;
-  font-size: 14px;
-  color: #4b7bec;
-  float: right; }
-  .cancel-button:hover {
-    opacity: 0.7;
-    cursor: pointer; }
+.poll-form-container input {
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding-left: 5px;
+  margin: 10px 0px;
+  font-size: 14px; }
 
-@media (min-width: 300px) {
-  .poll-form-header {
-    font-size: 30px; } }
-@media (min-width: 500px) {
-  .poll-form-container {
-    border: 1px solid #ddd;
-    width: 500px;
-    margin-top: 150px; }
-    .poll-form-container.open {
-      margin-top: 230px; }
+.poll-form-container .button-container {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  height: 60px;
+  margin: 0px auto 10px auto;
+  padding: 10px 0px; }
+  .poll-form-container .button-container button {
+    width: 110px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid #4b7bec;
+    background-color: #4b7bec;
+    color: white;
+    font-size: 14px; }
+    .poll-form-container .button-container button:not(.disabled):hover {
+      opacity: 0.7; }
+    .poll-form-container .button-container button.cancel {
+      background-color: white;
+      color: #4b7bec; }
+    .poll-form-container .button-container button.disabled {
+      cursor: default;
+      opacity: 0.5; }
 
-  .poll-form {
-    width: 90%; } }
 .poll-list {
   padding: 30px 0px 50px 0px; }
 
