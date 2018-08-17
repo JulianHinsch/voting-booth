@@ -5,7 +5,7 @@ export default class Option extends Component {
 
 	static propTypes = {
         option: PropTypes.object.isRequired,
-        percentage: PropTypes.number.isRequired,
+        percentage: PropTypes.string.isRequired,
         handleVote: PropTypes.func.isRequired,
     }
 

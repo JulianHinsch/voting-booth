@@ -5,8 +5,6 @@ import * as actions from '../actions/actioncreators.js';
 import Poll from '../components/Poll.js';
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps.match.params.id);
-    console.log(state.polls.get('items'));
     return ({
         poll: state.polls.get('items').find(poll => poll.get('id') === ownProps.match.params.id),
     })
@@ -15,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return ({
         updateOption: (id, option) => {
+            console.log(id,option);
             dispatch(actions.updateOption(id, option));
         }
     })   

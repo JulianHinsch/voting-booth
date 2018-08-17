@@ -92,12 +92,14 @@ const polls = (state = Immutable.fromJS(defaultState), action) => {
         case types.UPDATE_OPTION_START:
             return state.set('loading',true);
         case types.UPDATE_OPTION_SUCCESS:
-            //TODO test
             let pollIndex = polls.findIndex(poll => {
-                return poll.get('id') === action.option.pollId;
+                return poll.get('id') === action.option.get('poll_id');
             });
-            let optionIndex = polls.getIn([pollIndex,'options']).findIndex(option => option.id = action.option.id);
-            polls = polls.updateIn([pollIndex,'options',optionIndex], Immutable.fromJS(action.option));
+            let options = polls.getIn([pollIndex, 'options']);
+            let optionIndex = options.findIndex(option => {
+                return option.get('id') === action.option.get('id');
+            });
+            polls = polls.updateIn([pollIndex,'options',optionIndex], option => action.option);
             return state.merge({
                 items: polls,
                 loading: false,

@@ -97,13 +97,19 @@ export const deletePoll = (id) => {
 
 export const updateOption = (id, option) => {
 	return (dispatch) => {
-        dispatch(updateOptionStart())
-		return axios.patch((`${API_ROOT}/options/${id}`), option)
+        dispatch(updateOptionStart());
+		return axios.patch((`${API_ROOT}/options/${id}`), {
+            id: option.get('id'),
+            answer: option.get('answer'),
+            votes: option.get('votes'),
+            pollId: option.get('poll_id'),
+        })
   		.then(res => {
   			dispatch(updateOptionSuccess(option));
   		})
   		.catch(err => {
-            dispatch(updateOptionFailure(err))            
+            console.log(err);
+            dispatch(updateOptionFailure(err));       
         })
 	}
 }

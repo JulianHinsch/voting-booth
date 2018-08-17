@@ -18,13 +18,13 @@ button {
 .content {
   width: 90%;
   max-width: 600px;
-  margin: 20vh auto;
+  margin: 20vh auto 5vh auto;
   transition: margin 0.2s; }
 
 @media (min-width: 768px) {
   .content {
     border: 1px solid #bbb;
-    margin: 25vh auto; } }
+    margin: 25vh auto 5vh auto; } }
 .error {
   top: 35vh;
   border: none; }
@@ -130,7 +130,7 @@ td {
   width: 75%;
   text-align: left; }
 
-.poll-inner {
+.poll-detail-inner {
   width: 90%;
   max-width: 500px;
   margin: auto; }
@@ -142,6 +142,9 @@ td {
 
 .poll-detail h1 {
   margin: 30px auto 20px auto; }
+
+.poll-detail h4 {
+  font-weight: normal; }
 
 .poll-detail table {
   border-collapse: collapse;
@@ -157,8 +160,12 @@ td {
       cursor: default; }
 
 .back-link {
-  color: blue;
-  text-decoration: none; }
+  text-decoration: none;
+  height: 30px;
+  line-height: 30px;
+  margin: 20px; }
+  .back-link a {
+    color: blue; }
   .back-link:hover {
     text-decoration: underline; }
 
@@ -175,17 +182,19 @@ td {
   color: #336527;
   border-radius: 5px;
   visibility: visible; }
-
-.poll-thank-you-x {
-  height: 30px;
-  color: #888;
-  float: right;
-  font-size: 18px;
-  font-weight: lighter;
-  margin: 0px 0px 0px 0px; }
-  .poll-thank-you-x:hover {
-    opacity: 0.75;
-    cursor: pointer; }
+  .thank-you-message button {
+    float: right;
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+    background: transparent;
+    border: none; }
+    .thank-you-message button svg {
+      margin-top: -5px;
+      margin-left: -10px;
+      cursor: pointer; }
+      .thank-you-message button svg:hover {
+        opacity: 0.7; }
 
 .poll-form-container h1 {
   width: 90%;
