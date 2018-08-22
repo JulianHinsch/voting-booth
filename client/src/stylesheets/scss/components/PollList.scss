@@ -7,13 +7,15 @@
 	margin: auto;
 }
 
-.poll {
+.poll-list .poll {
     width: 80%;
     height: 40px;
     line-height: 40px;
     border: 1px solid #bbb;
     background-color: #ddd;
     margin: 20px auto;
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
     color: blue;
     &:hover {
@@ -31,10 +33,11 @@
 
 .link-container div {
     line-height: 40px;
-    width: 40%;
+    width: 100px;
     color: blue;
     & a {
         color: blue;
+        white-space: nowrap;
         &:hover {
             text-decoration: underline;
         }

@@ -60,7 +60,8 @@ export default class Poll extends Component {
                                     key={option.get('id')}
                                     option={option}
                                     percentage={this.calculatePercentage(option.get('votes'))}
-                                    handleVote={this.handleVote}/>
+                                    handleVote={this.handleVote}
+                                    voted={this.state.voted}/>
                                 ))}
                             </tbody>
                         </table>
