@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 export default class PollForm extends Component {
 
 	static propTypes = {
-		createPoll: PropTypes.func.isRequired,
+        createPoll: PropTypes.func.isRequired,
+        history: PropTypes.object.isRequired,
 	}
 
 	constructor(props) {
@@ -24,10 +25,20 @@ export default class PollForm extends Component {
     }
 
     handleSubmit = (event) => {
-		event.preventDefault();
-		this.props.createPoll(this.state.question, this.state.options.filter(el => el!==""));
-		this.props.history.push('/polls');
-	}
+        event.preventDefault();
+        if(this.state.canSubmit) {
+            this.props.createPoll({
+                question: this.state.question,
+                options: this.state.options.filter(el => el!==""),
+            });
+            this.props.history.push('/polls');
+        }
+    }
+    
+    handleCancel = (event) => {
+        event.preventDefault();
+        this.props.history.push('/');
+    }
     
     handleQuestionChange = (event) => {
         this.setState({[event.target.name]:event.target.value});
@@ -42,7 +53,10 @@ export default class PollForm extends Component {
     }
 
 	validateQuestion = (question) => {
-		this.setState({questionErrMsg: question==="" ? "This field is required." : ""});     
+		this.setState({
+            questionErrMsg: question==="" ? "This field is required." : "",
+            canSubmit: this.validateForm(question, this.state.options),
+        });     
 	}
 
 	validateOptions = (options) => {
@@ -52,9 +66,10 @@ export default class PollForm extends Component {
                 count++;
             }
         });
-		if (count < 2) {
-            this.setState({optionErrMsg: count < 2 ? "Please enter at least two options." : ""});
-        }    
+        this.setState({
+            optionErrMsg: count < 2 ? "Please enter at least two options." : "",
+            canSubmit: this.validateForm(this.state.question, options),
+        });
 	}
 
 	addAnswer = () => {
@@ -63,17 +78,20 @@ export default class PollForm extends Component {
 		this.setState({options: nextOptions});
 	}
 
-	canSubmit = () => {
-        if (this.state.question==="") {
+    /**
+     * TODO: refactor, combine validateQuestion and validateOptions
+     */
+	validateForm = (question, options) => {
+        if (question==="") {
             return false;
         }
 		let count=0;
-		this.state.options.forEach(option => {
+		options.forEach(option => {
             if (option !== "") {
                 count ++;
             }
         })
-		return count > 2;
+		return count >= 2;
 	}
 
 	render() {
@@ -102,14 +120,29 @@ export default class PollForm extends Component {
                                     onChange={this.handleOptionChange}/>
                             )
                         })}
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            width="24" 
+                            height="24" 
+                            viewBox="0 0 24 24" 
+                            fill="#4b7bec"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className='add-option'
+                            onClick={this.addAnswer}>
+                            <circle cx="12" cy="12" r="10" stroke="#4b7bec"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16" stroke="#fff"></line>
+                            <line x1="8" y1="12" x2="16" y2="12" stroke="#fff"></line>
+                        </svg>
                         <div className="err-msg">{this.state.optionErrMsg}</div>
                     </div>
                     <div className="button-container">
-                        <Link to="/"><button className="cancel"> Cancel </button></Link>
+                        <button className="cancel" onClick={this.handleCancel}> Cancel </button>
                         <button 
                             type={this.state.canSubmit ? 'submit': ''}
                             className={`submit-button ${this.state.canSubmit ? '' : 'disabled'}`}
-                            onSubmit={this.state.canSubmit ? this.handleSubmit : null}>
+                            onClick={this.handleSubmit}>
                             Create Poll!
                         </button>
                     </div>
