@@ -24,9 +24,11 @@ export default class PollForm extends Component {
     }
 
     handleSubmit = (event) => {
-		event.preventDefault();
-		this.props.createPoll(this.state.question, this.state.options.filter(el => el!==""));
-		this.props.history.push('/polls');
+        event.preventDefault();
+        if (this.state.canSubmit) {
+            this.props.createPoll(this.state.question, this.state.options.filter(el => el!==""));
+            this.props.history.push('/polls');
+        }
 	}
     
     handleQuestionChange = (event) => {
@@ -109,7 +111,7 @@ export default class PollForm extends Component {
                         <button 
                             type={this.state.canSubmit ? 'submit': ''}
                             className={`submit-button ${this.state.canSubmit ? '' : 'disabled'}`}
-                            onSubmit={this.state.canSubmit ? this.handleSubmit : null}>
+                            onClick={this.handleSubmit}>
                             Create Poll!
                         </button>
                     </div>
