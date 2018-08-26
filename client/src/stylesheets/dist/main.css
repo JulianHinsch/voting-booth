@@ -91,18 +91,20 @@ header {
 .loading {
   margin: 35vh auto; }
 
-tr {
+.option {
   width: 100%;
   height: 60px;
   line-height: 60px;
   text-align: left;
   padding-left: 10px;
   border: 1px solid #aaa; }
-  tr:hover {
+  .option:not(.disabled):hover {
     background-color: #eee;
     cursor: pointer; }
+  .option.disabled {
+    opacity: 0.7; }
 
-td {
+.option td {
   border: 0px;
   padding: 0px;
   padding-left: 10px; }
@@ -170,10 +172,11 @@ td {
     text-decoration: underline; }
 
 .thank-you-message {
+  width: 90%;
+  max-width: 600px;
   margin: 20px auto 10px auto;
   position: relative;
   height: 40px;
-  width: 60%;
   text-align: left;
   padding: 0px 10px 0px 10px;
   line-height: 40px;
@@ -201,9 +204,9 @@ td {
   margin: 30px auto 20px auto; }
 
 .poll-form-container .err-msg {
-  height: 15px;
+  height: 30px;
   width: 100%;
-  text-align: left;
+  text-align: right;
   color: red;
   font-size: 12px;
   font-weight: bold; }
@@ -225,15 +228,24 @@ td {
   margin: 10px 0px;
   font-size: 14px; }
 
+.poll-form-container .add-option {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  float: left; }
+  .poll-form-container .add-option:hover {
+    opacity: 0.7; }
+
 .poll-form-container .button-container {
-  width: 240px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: top;
   height: 60px;
   margin: 0px auto 10px auto;
   padding: 10px 0px; }
   .poll-form-container .button-container button {
+    margin: 0px 10px;
     width: 110px;
     height: 30px;
     border-radius: 5px;
@@ -258,16 +270,18 @@ td {
   width: 80%;
   margin: auto; }
 
-.poll {
+.poll-list .poll {
   width: 80%;
   height: 40px;
   line-height: 40px;
   border: 1px solid #bbb;
   background-color: #ddd;
   margin: 20px auto;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   color: blue; }
-  .poll:hover {
+  .poll-list .poll:hover {
     opacity: 0.8; }
 
 .link-container {
@@ -279,10 +293,11 @@ td {
 
 .link-container div {
   line-height: 40px;
-  width: 40%;
+  width: 100px;
   color: blue; }
   .link-container div a {
-    color: blue; }
+    color: blue;
+    white-space: nowrap; }
     .link-container div a:hover {
       text-decoration: underline; }
   .link-container div:last-child {

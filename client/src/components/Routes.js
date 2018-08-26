@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router';
 
-import Jumbotron from './Jumbotron';
+import JumbotronContainer from '../containers/JumbotronContainer';
 import PollFormContainer from '../containers/PollFormContainer';
 import PollListContainer from '../containers/PollListContainer';
 import PollContainer from '../containers/PollContainer';
 
-class Router extends Component {
+class Routes extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path='/' component={Jumbotron}/>
+                <Route exact path='/' component={JumbotronContainer}/>
                 <Route path='/new' component={PollFormContainer}/>
                 <Route exact path='/polls' component={PollListContainer}/>
                 <Route path='/polls/:id' component={PollContainer}/>
@@ -19,4 +19,4 @@ class Router extends Component {
     }
 }
 
-export default withRouter(Router);
+export default withRouter(Routes);

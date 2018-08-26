@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import Loading from './Loading';
 
 const Jumbotron = (props) => {
-    return (
+    return props.loading ? <Loading/> : (
         <div className="content jumbotron">
             <h1>Welcome to Voting Booth!</h1>
             <div className="button-container">
@@ -15,6 +18,10 @@ const Jumbotron = (props) => {
             </div>
         </div>
     )
+}
+
+Jumbotron.propTypes = {
+    loading: PropTypes.bool.isRequired,
 }
 
 export default Jumbotron;

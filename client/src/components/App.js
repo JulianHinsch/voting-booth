@@ -2,15 +2,13 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Error from './Error';
-import Loading from './Loading';
 import Header from './Header';
-import Router from './Router';
+import Routes from './Routes';
 
 export default class App extends Component {
 
     static propTypes = {
         loadPolls: PropTypes.func.isRequired,
-        loading: PropTypes.bool.isRequired,
         error: PropTypes.object,
     }
 
@@ -24,10 +22,8 @@ export default class App extends Component {
                 <Header/>
                 {this.props.error ? (
                     <Error/>
-                ) : this.props.loading ? (
-                    <Loading/>
                 ) : (
-                    <Router/>                    
+                    <Routes/>                    
                 )}
             </div>
         )
