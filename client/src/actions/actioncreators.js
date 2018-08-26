@@ -69,12 +69,12 @@ export const loadPolls = () => {
 	}
 }
 
-export const createPoll = (id, data) => {
+export const createPoll = (id, poll) => {
 	return dispatch => {
         dispatch(createPollStart());
-		return axios.post(`${API_ROOT}/polls`, data)
+		return axios.put(`${API_ROOT}/polls`, poll)
   		.then(res => {
-			dispatch(createPollSuccess(data));
+			dispatch(createPollSuccess(poll));
   		})
   		.catch(err => {
             dispatch(createPollFailure(err))

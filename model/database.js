@@ -31,7 +31,7 @@ const Option = database.define('option', {
     votes: {
         type: database.Sequelize.INTEGER,
         defaultValue: 0,
-        allowNull: false,
+        allowNull: true,
     },
     pollId: {
         type: database.Sequelize.UUID,

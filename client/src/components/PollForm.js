@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid';
 
 export default class PollForm extends Component {
 
@@ -26,10 +27,16 @@ export default class PollForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        let pollId = uuid.v4();
         if(this.state.canSubmit) {
             this.props.createPoll({
+                id: pollId,
                 question: this.state.question,
-                options: this.state.options.filter(el => el!==""),
+                options: this.state.options.filter(option => option !== "").map(option => ({
+                    id: uuid.v4(),
+                    pollId: pollId,
+                    answer: option,
+                })),
             });
             this.props.history.push('/polls');
         }

@@ -23,10 +23,9 @@ const findAll = (req,res,next) => {
 }
 
 const add = (req,res,next) => {
-    console.log(req.body);
 	Poll.create(req.body).then(result => {
-        const optionData = req.body.options.map(option => Option.create(option));
-        return Promise.all(optionData);
+        const optionArr = req.body.options.map(option => Option.create(option));
+        return Promise.all(optionArr);
     }).then(result => {
         return res.send(200);
     }).catch(next);
@@ -34,7 +33,6 @@ const add = (req,res,next) => {
 
 const deleteById = (req,res,next) => {
 	Poll.destroy({where: { id: req.params.id }}).then(result => {
-        console.log(result);
 		return res.send(200);
 	}).catch(next);
 }
