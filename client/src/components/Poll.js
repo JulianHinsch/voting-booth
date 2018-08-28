@@ -31,8 +31,10 @@ export default class Poll extends Component {
 	
 	calculatePercentage = (votes) => {
         let total = 0;
-		this.props.poll.get('options').forEach(option => total += option.get('votes'));
-		return total === 0 ? total : ((votes/total)*100).toFixed(0);
+        this.props.poll.get('options').forEach(option => {
+            total += option.get('votes')
+        });
+		return total === 0 ? total.toString() : ((votes/total)*100).toFixed(0);
 	}
 
 	handleVote = (option) => {

@@ -36,6 +36,7 @@ export default class PollForm extends Component {
                     id: uuid.v4(),
                     pollId: pollId,
                     answer: option,
+                    votes: 0,                    
                 })),
             });
             this.props.history.push('/polls');

@@ -1,42 +1,38 @@
 import * as types from '../actions/actiontypes';
 import Immutable from 'immutable';
-
-const generateUUID = () => {
-    var uuidv1 = require('uuid/v1');
-    return uuidv1();
-}
+import uuid from 'uuid';
 
 let defaultState = {
     loading: false,
     error: null,
     items: [
         {
-            id: generateUUID(),
+            id: uuid.v4(),
             question: "Why did the chicken cross the road?",
             options: [
                 {
-                    id: generateUUID(),
+                    id: uuid.v4(),
                     answer: "To get to the other side.",
                     votes: 504,
                 },
                 {
-                    id: generateUUID(),
+                    id: uuid.v4(),
                     answer: "Why not?",
                     votes: 320,
                 },
             ],
         },
         {
-            id: generateUUID(),
+            id: uuid.v4(),
             question: "Guess what?",
             options: [
                 {
-                    id: generateUUID(),
+                    id: uuid.v4(),
                     answer: "Who?",
                     votes: 124,
                 },
                 {
-                    id: generateUUID(),
+                    id: uuid.v4(),
                     answer: "What?",
                     votes: 0,
                 },
@@ -64,7 +60,7 @@ const polls = (state = Immutable.fromJS(defaultState), action) => {
             return state.set('loading',true);
         case types.CREATE_POLL_SUCCESS:
             //filter state in case poll already exists
-            polls = polls.filter(poll => poll.get('id') !== action.poll.id);
+            polls = polls.filter(poll => poll.get('id') !== action.poll.id);            
             //push updated or new poll to state
             polls = polls.push(Immutable.fromJS(action.poll));
             return state.merge({

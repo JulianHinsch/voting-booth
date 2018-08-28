@@ -59,7 +59,7 @@ export const updateOptionFailure = (err) => ({
 export const loadPolls = () => {
 	return dispatch => {
         dispatch(loadPollsStart());
-		return axios.get((`${API_ROOT}/polls`))
+		return axios.get(`${API_ROOT}/polls`)
 		.then(res => {
 			dispatch(loadPollsSuccess(res.data));
 		})
@@ -69,10 +69,10 @@ export const loadPolls = () => {
 	}
 }
 
-export const createPoll = (id, poll) => {
+export const createPoll = (poll) => {
 	return dispatch => {
         dispatch(createPollStart());
-		return axios.put(`${API_ROOT}/polls`, poll)
+		return axios.post(`${API_ROOT}/polls`, poll)
   		.then(res => {
 			dispatch(createPollSuccess(poll));
   		})
