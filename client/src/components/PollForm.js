@@ -19,14 +19,29 @@ export default class PollForm extends Component {
             optionsErrMsg: "",
             canSubmit: false,
 		}
-	}
-
-	componentDidMount() {
-		document.title="Voting Booth | New Poll";
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
+    componentWillMount() {
+        window.addEventListener('keydown', this.handleKeyDown);
+    }
+
+	componentDidMount() {
+        document.title="Voting Booth | New Poll";
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this.handleKeyDown);
+    }
+
+    handleKeyDown = (event) => {
+        //'enter' key
+        if(event.keyCode === 13) {
+            event.preventDefault();
+            this.handleSubmit();
+        }
+    }
+
+    handleSubmit = () => {
         let pollId = uuid.v4();
         if(this.state.canSubmit) {
             this.props.createPoll({
@@ -107,7 +122,7 @@ export default class PollForm extends Component {
         return (
             <div className='poll-form-container content'>
                 <h1> Create a new Poll! </h1>
-                <form onSubmit={this.handleSubmit}>
+                <div className='form'>
                     <label htmlFor='question'> Ask something... </label>
                     <input
                         name='question'
@@ -148,14 +163,25 @@ export default class PollForm extends Component {
                     <div className="button-container">
                         <button className="cancel" onClick={this.handleCancel}> Cancel </button>
                         <button 
-                            type={this.state.canSubmit ? 'submit': ''}
                             className={`submit-button ${this.state.canSubmit ? '' : 'disabled'}`}
                             onClick={this.handleSubmit}>
                             Create Poll!
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         );
 	}
 }
+
+
+/*
+
+<button 
+    type={this.state.canSubmit ? 'submit': ''}
+    className={`submit-button ${this.state.canSubmit ? '' : 'disabled'}`}
+    onClick={this.handleSubmit}>
+    Create Poll!
+</button>
+
+*/

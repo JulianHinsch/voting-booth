@@ -1,5 +1,5 @@
 import * as types from './actiontypes';
-import { API_ROOT } from '../utils/apiconfig';
+import { API_ROOT } from '../config/apiconfig';
 import axios from 'axios';
 
 //polls
