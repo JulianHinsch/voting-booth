@@ -49,3 +49,5 @@ $ npm run sass
 - Add a general 404 page
 - Improve error handling and loading
 - Refactor form validation methods
+- General restyle
+- Test styles for mobile on real iPhone.
