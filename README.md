@@ -2,8 +2,10 @@
 
 Create polls for the public!
 
-Back End: Node.js, Express, Postgres, Sequelize
+Database: Postgres
+Back End: Node.js, Express, Sequelize
 Front End: React, Redux, Sass
+Libraries Used: [Moment.js](https://momentjs.com/), [Immutable.js](https://facebook.github.io/immutable-js/)
 
 ## Run it locally!
 
@@ -50,4 +52,4 @@ $ npm run sass
 - Improve error handling and loading
 - Refactor form validation methods
 - General restyle
-- Test styles for mobile on real iPhone.
+- Test styles for mobile on real iPhone
