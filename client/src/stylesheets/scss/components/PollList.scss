@@ -4,27 +4,28 @@
 
 .poll-list h1 {
 	width: 80%;
-	margin: 0px auto 0px auto;
+	margin: 0px auto 20px auto;
 }
 
 .poll-list .poll {
     width: 80%;
-    margin: 40px auto;
+    margin: 30px auto 40px auto;
     text-align: left;
     & a {
         color: $brand-blue;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 20px;
+        &:hover {
+            opacity: 0.8;
+        }
     }
     & p {
         margin: 10px 0px;
         color: #666;
         font-size: 12px;
     }
-    &:hover {
-        opacity: 0.8;
-    }
+    
     & hr {
         display: none;
         width: 100px;
@@ -39,27 +40,28 @@
 	margin: 0px auto;
 	width: 80%;
     text-align: left;
-    display: flex;
-    justify-content: space-between;
 }
 
 .link-container div {
     line-height: 30px;
     width: 100px;
-    color: $brand-blue;
     & a {
-        color: black;
+        color: $brand-blue;
         white-space: nowrap;
+        font-size: 14px;
+        color: #666;
         & svg {
+            color: $brand-blue;
             vertical-align: middle;
             margin-top: -2px;
+            height: 18px;
+            &.add-option {
+                margin-right: 4px;
+            }
         }
     }
-    &:last-child {
-        text-align: right;
-    }
     &:hover {
-        opacity: 0.8;
+        text-decoration: underline;
     }
 }
 

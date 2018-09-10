@@ -5,6 +5,7 @@ import JumbotronContainer from '../containers/JumbotronContainer';
 import PollFormContainer from '../containers/PollFormContainer';
 import PollListContainer from '../containers/PollListContainer';
 import PollContainer from '../containers/PollContainer';
+import NotFound from './NotFound';
 
 class Routes extends Component {
     render() {
@@ -14,6 +15,7 @@ class Routes extends Component {
                 <Route path='/new' component={PollFormContainer}/>
                 <Route exact path='/polls' component={PollListContainer}/>
                 <Route path='/polls/:id' component={PollContainer}/>
+                <Route component={NotFound}/>
             </Switch>
         )
     }

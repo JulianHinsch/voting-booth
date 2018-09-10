@@ -268,23 +268,23 @@ header {
 
 .poll-list h1 {
   width: 80%;
-  margin: 0px auto 0px auto; }
+  margin: 0px auto 20px auto; }
 
 .poll-list .poll {
   width: 80%;
-  margin: 40px auto;
+  margin: 30px auto 40px auto;
   text-align: left; }
   .poll-list .poll a {
     color: #4b7bec;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 20px; }
+    .poll-list .poll a:hover {
+      opacity: 0.8; }
   .poll-list .poll p {
     margin: 10px 0px;
     color: #666;
     font-size: 12px; }
-  .poll-list .poll:hover {
-    opacity: 0.8; }
   .poll-list .poll hr {
     display: none;
     width: 100px;
@@ -296,23 +296,24 @@ header {
 .link-container {
   margin: 0px auto;
   width: 80%;
-  text-align: left;
-  display: flex;
-  justify-content: space-between; }
+  text-align: left; }
 
 .link-container div {
   line-height: 30px;
-  width: 100px;
-  color: #4b7bec; }
+  width: 100px; }
   .link-container div a {
-    color: black;
-    white-space: nowrap; }
+    color: #4b7bec;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #666; }
     .link-container div a svg {
+      color: #4b7bec;
       vertical-align: middle;
-      margin-top: -2px; }
-  .link-container div:last-child {
-    text-align: right; }
+      margin-top: -2px;
+      height: 18px; }
+      .link-container div a svg.add-option {
+        margin-right: 4px; }
   .link-container div:hover {
-    opacity: 0.8; }
+    text-decoration: underline; }
 
 /*# sourceMappingURL=main.css.map */
