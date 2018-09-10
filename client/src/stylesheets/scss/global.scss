@@ -24,14 +24,14 @@ button {
 .content {
     width: 90%;
     max-width: 600px;
-    margin: 20vh auto 5vh auto;
+    margin: 15vh auto 0px auto;
     transition: margin 0.2s;
 }
 
 @media(min-width: 768px) {
     .content {
         border: 1px solid #bbb;
-        margin: 25vh auto 5vh auto;
+        margin: 20vh auto 0px auto;
     }
 }
 

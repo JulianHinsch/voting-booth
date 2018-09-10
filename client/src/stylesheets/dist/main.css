@@ -18,13 +18,13 @@ button {
 .content {
   width: 90%;
   max-width: 600px;
-  margin: 20vh auto 5vh auto;
+  margin: 15vh auto 0px auto;
   transition: margin 0.2s; }
 
 @media (min-width: 768px) {
   .content {
     border: 1px solid #bbb;
-    margin: 25vh auto 5vh auto; } }
+    margin: 20vh auto 0px auto; } }
 .error {
   top: 35vh;
   border: none; }
@@ -167,7 +167,7 @@ header {
   line-height: 30px;
   margin: 20px; }
   .back-link a {
-    color: blue; }
+    color: #4b7bec; }
   .back-link:hover {
     text-decoration: underline; }
 
@@ -246,7 +246,7 @@ header {
   padding: 10px 0px; }
   .poll-form-container .button-container button {
     margin: 0px 10px;
-    width: 110px;
+    min-width: 100px;
     height: 30px;
     border-radius: 5px;
     cursor: pointer;
@@ -268,39 +268,51 @@ header {
 
 .poll-list h1 {
   width: 80%;
-  margin: auto; }
+  margin: 0px auto 0px auto; }
 
 .poll-list .poll {
   width: 80%;
-  height: 40px;
-  line-height: 40px;
-  border: 1px solid #bbb;
-  background-color: #ddd;
-  margin: 20px auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: blue; }
+  margin: 40px auto;
+  text-align: left; }
+  .poll-list .poll a {
+    color: #4b7bec;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px; }
+  .poll-list .poll p {
+    margin: 10px 0px;
+    color: #666;
+    font-size: 12px; }
   .poll-list .poll:hover {
     opacity: 0.8; }
+  .poll-list .poll hr {
+    display: none;
+    width: 100px;
+    height: 2px;
+    background-color: #f5f5f5;
+    border: 0px;
+    margin: 20px auto; }
 
 .link-container {
-  margin: 30px auto 0px auto;
+  margin: 0px auto;
   width: 80%;
   text-align: left;
   display: flex;
   justify-content: space-between; }
 
 .link-container div {
-  line-height: 40px;
+  line-height: 30px;
   width: 100px;
-  color: blue; }
+  color: #4b7bec; }
   .link-container div a {
-    color: blue;
+    color: black;
     white-space: nowrap; }
-    .link-container div a:hover {
-      text-decoration: underline; }
+    .link-container div a svg {
+      vertical-align: middle;
+      margin-top: -2px; }
   .link-container div:last-child {
     text-align: right; }
+  .link-container div:hover {
+    opacity: 0.8; }
 
 /*# sourceMappingURL=main.css.map */
