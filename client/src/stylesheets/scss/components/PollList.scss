@@ -4,27 +4,39 @@
 
 .poll-list h1 {
 	width: 80%;
-	margin: auto;
+	margin: 0px auto 0px auto;
 }
 
 .poll-list .poll {
     width: 80%;
-    height: 40px;
-    line-height: 40px;
-    border: 1px solid #bbb;
-    background-color: #ddd;
-    margin: 20px auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: blue;
+    margin: 40px auto;
+    text-align: left;
+    & a {
+        color: $brand-blue;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 20px;
+    }
+    & p {
+        margin: 10px 0px;
+        color: #666;
+        font-size: 12px;
+    }
     &:hover {
         opacity: 0.8;
+    }
+    & hr {
+        display: none;
+        width: 100px;
+        height: 2px;
+        background-color: #f5f5f5;
+        border: 0px;
+        margin: 20px auto;
     }
 }
 
 .link-container {
-	margin: 30px auto 0px auto;
+	margin: 0px auto;
 	width: 80%;
     text-align: left;
     display: flex;
@@ -32,18 +44,22 @@
 }
 
 .link-container div {
-    line-height: 40px;
+    line-height: 30px;
     width: 100px;
-    color: blue;
+    color: $brand-blue;
     & a {
-        color: blue;
+        color: black;
         white-space: nowrap;
-        &:hover {
-            text-decoration: underline;
+        & svg {
+            vertical-align: middle;
+            margin-top: -2px;
         }
     }
     &:last-child {
         text-align: right;
+    }
+    &:hover {
+        opacity: 0.8;
     }
 }
 

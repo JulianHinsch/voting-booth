@@ -1,5 +1,3 @@
-
-
 .poll-form-container h1 {
     width: 90%;
     margin: 30px auto 20px auto;
@@ -7,7 +5,7 @@
 
 .poll-form-container .err-msg {
     height: 30px;
-	width: 100%;
+    width: 100%;
     text-align: right;
 	color: red;
 	font-size: 12px;
@@ -54,7 +52,7 @@
 	padding: 10px 0px;
     & button {
         margin: 0px 10px;
-        width: 110px;
+        min-width: 100px;
         height: 30px;
         border-radius: 5px;
         cursor: pointer;
