@@ -99,7 +99,7 @@ header {
   padding-left: 10px;
   border: 1px solid #aaa; }
   .option:not(.disabled):hover {
-    background-color: #eee;
+    background-color: #f7f7f7;
     cursor: pointer; }
   .option.disabled {
     opacity: 0.7; }
@@ -146,7 +146,8 @@ header {
   margin: 30px auto 20px auto; }
 
 .poll-detail h4 {
-  font-weight: normal; }
+  font-weight: normal;
+  color: #666; }
 
 .poll-detail table {
   border-collapse: collapse;
@@ -172,8 +173,8 @@ header {
     text-decoration: underline; }
 
 .thank-you-message {
-  width: 90%;
-  max-width: 600px;
+  width: 80%;
+  max-width: 500px;
   margin: 20px auto 10px auto;
   position: relative;
   height: 40px;
@@ -184,7 +185,11 @@ header {
   border: 1px solid #b7ccaa;
   color: #336527;
   border-radius: 5px;
-  visibility: visible; }
+  visibility: visible;
+  white-space: nowrap;
+  overflow: auto;
+  text-overflow: ellipsis;
+  font-size: 14px; }
   .thank-you-message button {
     float: right;
     height: 20px;
@@ -199,6 +204,10 @@ header {
       .thank-you-message button svg:hover {
         opacity: 0.7; }
 
+@media (min-width: 768px) {
+  .thank-you-message {
+    font-size: 16px;
+    max-width: 600px; } }
 .poll-form-container h1 {
   width: 90%;
   margin: 30px auto 20px auto; }
@@ -275,7 +284,7 @@ header {
   margin: 30px auto 40px auto;
   text-align: left; }
   .poll-list .poll a {
-    color: #4b7bec;
+    color: black;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 20px; }

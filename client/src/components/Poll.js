@@ -73,7 +73,7 @@ export default class Poll extends Component {
                     </div>
                 </div>
                 <div className='thank-you-message' style={this.state.showThanks ? null : { display: 'none' }}>
-                    Thanks! Your vote has been recorded.
+                    Nice! Your vote has been recorded.
                     <button onClick={() => this.setState({showThanks: false})}>
                         <svg 
                             xmlns="http://www.w3.org/2000/svg" 
