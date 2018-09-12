@@ -1,47 +1,66 @@
 .option {
+    position: relative;
 	width: 100%;
-	height: 60px;
-	line-height: 60px;
 	text-align: left;
-	padding-left: 10px;
-	border: 1px solid #aaa;
-	&:not(.disabled):hover {
+    &:hover {
 		background-color: #f7f7f7;
 		cursor: pointer;
     }
-    &.disabled {
+    &.voted {
         opacity: 0.7;
+        height: 94px;
+        background-color: #fff !important;
+		cursor: default !important;
+    }
+    & table {
+        position: relative;
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #aaa;
+        &:first-child {
+            margin-top: -3px;
+            & tr {
+                height: 60px;
+                line-height: 60px;
+            }
+        }
+        &:not(:first-child) {
+            margin-top: -1px;
+            & tr {
+                height: 30px;
+                line-height: 30px;
+            }
+        } 
+    }
+    &:not(:first-child) {
+        margin-top: 1px;
     }
 }
 
 .option td {
 	border: 0px;
 	padding: 0px;
-	padding-left: 10px;
-}
-
-.poll-option-data {
-	margin-right: 0px;
-	height: 60px;
-	width: 130px;
-}
-
-.poll-option-percentage {
-	position: relative;
-	float: right;
-	margin: 5px 5px 5px 5px;
-	width: 50px;
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
-	border-radius: 25px;
-	font-weight: bold;
-	background-color: $brand-blue;
-	color: white;
-}
-
-.back-link-container {
-	margin: 20px auto 0px auto;
-	width: 75%;
-	text-align: left;
+    padding-left: 10px;
+    &.radio {
+        width: 30px;
+    }
+    &.votes {
+        width: 90px;
+    }
+    &.percentage {
+        width: 60px;
+    }
+    &.bar {
+        padding-right: 10px;
+        & div {
+            height: 20px;
+            border-radius: 3px;
+            background-color: #ddd;
+            & div {
+                background-color: $brand-blue;
+                float: left;
+                border-radius: 5px 0px 0px 5px;
+            }
+        }
+    }
 }

@@ -2,25 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Option = (props) => (
-    <tr
-        className={`option ${props.voted ? 'disabled' : ''}`}
-        onClick={() => props.handleVote(props.option)}>
-        <td>
-            {props.option.get('answer')}
-        </td>
-        <td>
-            {props.option.get('votes')} votes
-        </td>
-        <td>
-            {props.percentage}%
-        </td>
-    </tr>
+    <div className={`option ${props.voted ? 'voted' : ''}`}>
+        <table>
+            <tbody>
+                <tr onClick={() => props.handleSelect(props.option)}>
+                    <td className='radio'>
+                        <input type='radio' checked={props.selected ? true : false}/>
+                    </td>
+                    <td colSpan={2}>
+                        {props.option.get('answer')}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 )
 
 Option.propTypes = {
     option: PropTypes.object.isRequired,
-    percentage: PropTypes.string.isRequired,
-    handleVote: PropTypes.func.isRequired,
+    selected: PropTypes.bool,
+    handleSelect: PropTypes.func.isRequired,
     voted: PropTypes.bool.isRequired,
 }
 

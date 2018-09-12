@@ -1,7 +1,6 @@
-.poll-detail-inner {
-    width: 90%;
-    max-width: 500px;
-    margin: auto;
+.poll-detail {
+    text-align: left;
+    padding: 40px 5% 40px 5%;
 }
 
 .poll-detail h1,
@@ -11,7 +10,7 @@
 }
 
 .poll-detail h1 {
-    margin: 30px auto 20px auto;
+    margin: 20px auto 20px auto;
 }
 
 .poll-detail h4 {
@@ -19,75 +18,34 @@
     color: #666;
 }
 
-.poll-detail table {
-	border-collapse: collapse;
-	width: 100%;
-	margin: auto;
-	background-color: white;
-	border: 1px solid #aaa;
-	padding: 0px;
-	&.voted {
-		opacity: 0.5;
-		& tr:hover {
-			background-color: #fff;
-			cursor: default;
-		}
-	}
-}
-
-.back-link {
+.poll-detail .back-link {
+    color: $brand-blue;
     text-decoration: none;
     height: 30px;
     line-height: 30px;
-    margin: 20px;
+    &:hover {
+       opacity: 0.8;
+    }
     & a {
-        color: $brand-blue;
-    }
-	&:hover {
-		text-decoration: underline;
-	}
-}
-
-.thank-you-message {
-    width: 80%;
-    max-width: 500px;
-	margin: 20px auto 10px auto;
-	position: relative;
-	height: 40px;
-	text-align: left;
-	padding: 0px 10px 0px 10px;
-	line-height: 40px;
-	background-color: #d9eecc;
-	border: 1px solid #b7ccaa;
-	color: #336527;
-	border-radius: 5px;
-    visibility: visible;
-    white-space: nowrap;
-    overflow: auto;
-    text-overflow: ellipsis;
-    font-size: 14px;
-    & button {
-        float: right;
-        height: 20px;
-        width: 20px;
-        margin: 10px;
-        background: transparent;
-        border: none;
-        & svg {
-            margin-top: -5px;
-            margin-left: -10px;
-            cursor: pointer;
-            &:hover {
-                opacity: 0.7;
-            }
-        }
+        color: inherit;
+        vertical-align: middle;
     }
 }
 
-@media(min-width: 768px) {
-    .thank-you-message {
-        font-size: 16px;
-        max-width: 600px;
+.poll-detail button {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    margin-top: 20px;
+    &.disabled {
+        background-color: grey;
+        opacity: 0.6;
+    }
+    &.submit {
+        cursor: pointer;
     }
 }
 
