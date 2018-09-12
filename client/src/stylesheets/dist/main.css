@@ -92,34 +92,16 @@ header {
   margin: 35vh auto; }
 
 .option {
-  position: relative;
-  width: 100%;
-  text-align: left; }
+  height: 60px;
+  text-align: left;
+  border: 1px solid #aaa; }
   .option:hover {
     background-color: #f7f7f7;
     cursor: pointer; }
   .option.voted {
     opacity: 0.7;
-    height: 94px;
     background-color: #fff !important;
     cursor: default !important; }
-  .option table {
-    position: relative;
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid #aaa; }
-    .option table:first-child {
-      margin-top: -3px; }
-      .option table:first-child tr {
-        height: 60px;
-        line-height: 60px; }
-    .option table:not(:first-child) {
-      margin-top: -1px; }
-      .option table:not(:first-child) tr {
-        height: 30px;
-        line-height: 30px; }
-  .option:not(:first-child) {
-    margin-top: 1px; }
 
 .option td {
   border: 0px;
@@ -127,20 +109,26 @@ header {
   padding-left: 10px; }
   .option td.radio {
     width: 30px; }
-  .option td.votes {
-    width: 90px; }
-  .option td.percentage {
-    width: 60px; }
-  .option td.bar {
-    padding-right: 10px; }
-    .option td.bar div {
-      height: 20px;
-      border-radius: 3px;
-      background-color: #ddd; }
-      .option td.bar div div {
-        background-color: #4b7bec;
-        float: left;
-        border-radius: 5px 0px 0px 5px; }
+
+.option-results {
+  border: 1px solid #aaa;
+  height: 30px; }
+
+.option-results td.votes {
+  width: 90px;
+  padding-left: 10px; }
+.option-results td.percentage {
+  width: 60px; }
+.option-results td.bar {
+  padding-right: 10px; }
+  .option-results td.bar div {
+    height: 20px;
+    border-radius: 3px;
+    background-color: #ddd; }
+    .option-results td.bar div div {
+      background-color: #4b7bec;
+      float: left;
+      border-radius: 5px 0px 0px 5px; }
 
 .poll-detail {
   text-align: left;
@@ -168,6 +156,13 @@ header {
   .poll-detail .back-link a {
     color: inherit;
     vertical-align: middle; }
+
+.poll-detail table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%; }
+  .poll-detail table.option-results-list {
+    margin-top: 20px; }
 
 .poll-detail button {
   width: 100px;

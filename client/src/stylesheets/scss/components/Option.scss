@@ -1,39 +1,15 @@
 .option {
-    position: relative;
-	width: 100%;
-	text-align: left;
+    height: 60px;
+    text-align: left;
+    border: 1px solid #aaa;
     &:hover {
 		background-color: #f7f7f7;
 		cursor: pointer;
     }
     &.voted {
         opacity: 0.7;
-        height: 94px;
         background-color: #fff !important;
 		cursor: default !important;
-    }
-    & table {
-        position: relative;
-        border-collapse: collapse;
-        width: 100%;
-        border: 1px solid #aaa;
-        &:first-child {
-            margin-top: -3px;
-            & tr {
-                height: 60px;
-                line-height: 60px;
-            }
-        }
-        &:not(:first-child) {
-            margin-top: -1px;
-            & tr {
-                height: 30px;
-                line-height: 30px;
-            }
-        } 
-    }
-    &:not(:first-child) {
-        margin-top: 1px;
     }
 }
 
@@ -43,24 +19,5 @@
     padding-left: 10px;
     &.radio {
         width: 30px;
-    }
-    &.votes {
-        width: 90px;
-    }
-    &.percentage {
-        width: 60px;
-    }
-    &.bar {
-        padding-right: 10px;
-        & div {
-            height: 20px;
-            border-radius: 3px;
-            background-color: #ddd;
-            & div {
-                background-color: $brand-blue;
-                float: left;
-                border-radius: 5px 0px 0px 5px;
-            }
-        }
     }
 }

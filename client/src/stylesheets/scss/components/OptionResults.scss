@@ -1,0 +1,27 @@
+.option-results {
+    border: 1px solid #aaa;
+    height: 30px;
+}
+
+.option-results td {
+    &.votes {
+        width: 90px;
+        padding-left: 10px;
+    }
+    &.percentage {
+        width: 60px;
+    }
+    &.bar {
+        padding-right: 10px;
+        & div {
+            height: 20px;
+            border-radius: 3px;
+            background-color: #ddd;
+            & div {
+                background-color: $brand-blue;
+                float: left;
+                border-radius: 5px 0px 0px 5px;
+            }
+        }
+    }
+}

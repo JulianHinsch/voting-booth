@@ -56,22 +56,32 @@ export default class Poll extends Component {
                     </div>
                     <h1>{this.props.poll.get('question')}</h1>
                     <h4>Asked {moment(this.props.poll.get('createdAt')).fromNow()}</h4>
-                    {this.props.poll.get('options').map(option => (
-                        <Option
-                            key={option.get('id')}
-                            option={option}
-                            handleSelect={this.handleSelect}
-                            selected={this.state.selectedOption && (
-                                option.get('id') === this.state.selectedOption.get('id')
-                            )}
-                            voted={this.state.voted}/>
-                    ))}
-                    {this.state.voted && this.props.poll.get('options').map(option => (
-                        <OptionResults
-                            key={option.get('id')}
-                            option={option}
-                            percentage={this.calculatePercentage(option.get('votes'))}/>
-                    ))}
+                    <table className='options-list'>
+                        <tbody>
+                            {this.props.poll.get('options').map(option => (
+                                <Option
+                                    key={option.get('id')}
+                                    option={option}
+                                    handleSelect={this.handleSelect}
+                                    selected={this.state.selectedOption && (
+                                        option.get('id') === this.state.selectedOption.get('id')
+                                    )}
+                                    voted={this.state.voted}/>
+                            ))}
+                        </tbody>
+                    </table>
+                    {this.state.voted && (
+                        <table className='option-results-list'>
+                            <tbody>
+                                {this.state.voted && this.props.poll.get('options').map(option => (
+                                    <OptionResults
+                                        key={option.get('id')}
+                                        option={option}
+                                        percentage={this.calculatePercentage(option.get('votes'))}/>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
                     {(!this.state.voted && !this.state.selectedOption) && (
                         <button className='disabled'>Submit</button>
                     )}

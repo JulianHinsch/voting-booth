@@ -32,6 +32,15 @@
     }
 }
 
+.poll-detail table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+    &.option-results-list {
+        margin-top: 20px;
+    }
+}
+
 .poll-detail button {
     width: 100px;
     height: 35px;
