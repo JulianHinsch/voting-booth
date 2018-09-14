@@ -8,9 +8,9 @@ html,body {
   width: 100%;
   margin: 0px;
   padding: 0px;
-  text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
   background-color: white;
+  transition: background-color 0.2s;
 }
 
 a {
@@ -24,14 +24,34 @@ button {
 .content {
     width: 90%;
     max-width: 600px;
-    margin: 15vh auto 0px auto;
+    margin: 15vh auto 5vh auto;
     transition: margin 0.2s;
+    background-color: white;
+    & h1 {
+        width: 100%;
+        margin: 20px 0px;
+    }
+}
+
+.back-link {
+    color: $brand-blue;
+    text-decoration: none;
+    height: 30px;
+    line-height: 30px;
+    & svg {
+        vertical-align: middle;
+        margin-top: -3px;
+        height: 20px;
+    }
 }
 
 @media(min-width: 768px) {
     .content {
         border: 1px solid #bbb;
-        margin: 20vh auto 0px auto;
+        margin: 20vh auto 5vh auto;
+    }
+    html, body {
+        background-color: #f2f3f5;
     }
 }
 

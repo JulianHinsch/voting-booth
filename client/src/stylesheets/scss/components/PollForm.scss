@@ -1,10 +1,15 @@
+.poll-form-container {
+    padding: 40px 5%;
+    text-align: left;
+}
+
 .poll-form-container h1 {
-    width: 90%;
-    margin: 30px auto 20px auto;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto 20px auto;
 }
 
 .poll-form-container .err-msg {
-    height: 30px;
     width: 100%;
     text-align: right;
 	color: red;
@@ -13,9 +18,10 @@
 }
 
 .poll-form-container .form {
-    width: 90%;
+    width: 100%;
     max-width: 400px;
     margin: auto;
+    text-align: left;
 }
 
 .poll-form-container label {
@@ -33,43 +39,35 @@
 }
 
 .poll-form-container .add-option {
-    width: 30px;
-    height: 30px;
     cursor: pointer;
-    float: left;
-    &:hover {
+    color: $brand-blue;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 0px;
+}
+
+.poll-form-container button {
+    margin: 0px;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    font-size: 14px;
+    &:not(.disabled):hover {
         opacity: 0.7;
+    }
+    &.disabled {
+        cursor: default;
+        opacity: 0.5;
     }
 }
 
-.poll-form-container .button-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: top;
-	height: 60px;
-	margin: 0px auto 10px auto;
-	padding: 10px 0px;
-    & button {
-        margin: 0px 10px;
-        min-width: 100px;
-        height: 30px;
-        border-radius: 5px;
-        cursor: pointer;
-        border: 2px solid $brand-blue;
-        background-color: $brand-blue;
-        color: white;
-        font-size: 14px;
-        &:not(.disabled):hover {
-            opacity: 0.7;
-        }
-        &.cancel {
-            background-color: white;
-            color: $brand-blue;
-        }
-        &.disabled {
-            cursor: default;
-            opacity: 0.5;
-        }
-    }
+.poll-form-container .cancel a {
+    color: $brand-blue;
+    cursor: pointer;
+    font-size: 14px;
 }
+

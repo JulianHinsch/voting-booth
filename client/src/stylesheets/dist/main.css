@@ -5,9 +5,9 @@ html, body {
   width: 100%;
   margin: 0px;
   padding: 0px;
-  text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
-  background-color: white; }
+  background-color: white;
+  transition: background-color 0.2s; }
 
 a {
   text-decoration: none; }
@@ -18,13 +18,30 @@ button {
 .content {
   width: 90%;
   max-width: 600px;
-  margin: 15vh auto 0px auto;
-  transition: margin 0.2s; }
+  margin: 15vh auto 5vh auto;
+  transition: margin 0.2s;
+  background-color: white; }
+  .content h1 {
+    width: 100%;
+    margin: 20px 0px; }
+
+.back-link {
+  color: #4b7bec;
+  text-decoration: none;
+  height: 30px;
+  line-height: 30px; }
+  .back-link svg {
+    vertical-align: middle;
+    margin-top: -3px;
+    height: 20px; }
 
 @media (min-width: 768px) {
   .content {
     border: 1px solid #bbb;
-    margin: 20vh auto 0px auto; } }
+    margin: 20vh auto 5vh auto; }
+
+  html, body {
+    background-color: #f2f3f5; } }
 .error {
   top: 35vh;
   border: none; }
@@ -62,23 +79,13 @@ header {
   .text-logo {
     display: block; } }
 .jumbotron {
-  padding: 30px 0px 50px 0px; }
-
-.jumbotron h1 {
-  width: 80%;
-  margin: auto; }
-
-.jumbotron .button-container {
-  width: 100%;
-  height: 140px;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; }
+  padding: 30px 0px 50px 0px;
+  text-align: center; }
 
 .jumbotron button {
   width: 80%;
   height: 60px;
+  margin: 15px auto;
   border-radius: 5px;
   border: none;
   font-size: 24px;
@@ -125,10 +132,10 @@ header {
 .option-results td:first-child {
   padding-left: 10px; }
 .option-results td.votes {
-  width: 90px;
+  width: 70px;
   font-size: 12px; }
 .option-results td.percentage {
-  width: 60px;
+  width: 50px;
   font-size: 12px; }
 .option-results td.bar {
   padding-right: 10px; }
@@ -145,11 +152,6 @@ header {
   text-align: left;
   padding: 40px 5% 40px 5%; }
 
-.poll-detail h1,
-.poll-detail h4 {
-  width: 100%;
-  text-align: left; }
-
 .poll-detail h1 {
   margin: 20px auto 20px auto; }
 
@@ -157,17 +159,6 @@ header {
   font-weight: normal;
   font-size: 14px;
   color: #666; }
-
-.poll-detail .back-link {
-  color: #4b7bec;
-  text-decoration: none;
-  height: 30px;
-  line-height: 30px; }
-  .poll-detail .back-link:hover {
-    opacity: 0.8; }
-  .poll-detail .back-link a {
-    color: inherit;
-    vertical-align: middle; }
 
 .poll-detail table {
   border-collapse: collapse;
@@ -189,12 +180,16 @@ header {
   .poll-detail button.submit {
     cursor: pointer; }
 
+.poll-form-container {
+  padding: 40px 5%;
+  text-align: left; }
+
 .poll-form-container h1 {
-  width: 90%;
-  margin: 30px auto 20px auto; }
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto 20px auto; }
 
 .poll-form-container .err-msg {
-  height: 30px;
   width: 100%;
   text-align: right;
   color: red;
@@ -202,9 +197,10 @@ header {
   font-weight: bold; }
 
 .poll-form-container .form {
-  width: 90%;
+  width: 100%;
   max-width: 400px;
-  margin: auto; }
+  margin: auto;
+  text-align: left; }
 
 .poll-form-container label {
   float: left;
@@ -219,91 +215,65 @@ header {
   font-size: 14px; }
 
 .poll-form-container .add-option {
-  width: 30px;
-  height: 30px;
   cursor: pointer;
-  float: left; }
-  .poll-form-container .add-option:hover {
-    opacity: 0.7; }
+  color: #4b7bec;
+  font-size: 14px;
+  text-align: left;
+  margin-top: 0px; }
 
-.poll-form-container .button-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: top;
-  height: 60px;
-  margin: 0px auto 10px auto;
-  padding: 10px 0px; }
-  .poll-form-container .button-container button {
-    margin: 0px 10px;
-    min-width: 100px;
-    height: 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 2px solid #4b7bec;
-    background-color: #4b7bec;
-    color: white;
-    font-size: 14px; }
-    .poll-form-container .button-container button:not(.disabled):hover {
-      opacity: 0.7; }
-    .poll-form-container .button-container button.cancel {
-      background-color: white;
-      color: #4b7bec; }
-    .poll-form-container .button-container button.disabled {
-      cursor: default;
-      opacity: 0.5; }
+.poll-form-container button {
+  margin: 0px;
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-size: 14px; }
+  .poll-form-container button:not(.disabled):hover {
+    opacity: 0.7; }
+  .poll-form-container button.disabled {
+    cursor: default;
+    opacity: 0.5; }
+
+.poll-form-container .cancel a {
+  color: #4b7bec;
+  cursor: pointer;
+  font-size: 14px; }
 
 .poll-list {
-  padding: 30px 0px 50px 0px; }
-
-.poll-list h1 {
-  width: 80%;
-  margin: 0px auto 20px auto; }
+  padding: 40px 5% 40px 5%; }
 
 .poll-list .poll {
-  width: 80%;
-  margin: 30px auto 40px auto;
-  text-align: left; }
+  width: 100%;
+  margin: 20px auto 20px auto; }
   .poll-list .poll a {
     color: black;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 20px; }
+    font-size: 20px;
+    font-weight: 500; }
     .poll-list .poll a:hover {
       opacity: 0.8; }
   .poll-list .poll p {
     margin: 10px 0px;
     color: #666;
     font-size: 12px; }
-  .poll-list .poll hr {
-    display: none;
-    width: 100px;
-    height: 2px;
-    background-color: #f5f5f5;
-    border: 0px;
-    margin: 20px auto; }
 
-.link-container {
-  margin: 0px auto;
-  width: 80%;
-  text-align: left; }
+.poll-list hr {
+  width: 100%;
+  height: 2px;
+  background-color: #f5f5f5;
+  border: 0px;
+  margin: 20px auto; }
 
-.link-container div {
-  line-height: 30px;
-  width: 100px; }
-  .link-container div a {
-    color: #4b7bec;
-    white-space: nowrap;
-    font-size: 14px;
-    color: #666; }
-    .link-container div a svg {
-      color: #4b7bec;
-      vertical-align: middle;
-      margin-top: -2px;
-      height: 18px; }
-      .link-container div a svg.add-option {
-        margin-right: 4px; }
-  .link-container div:hover {
-    text-decoration: underline; }
+.poll-list .create-a-poll {
+  color: #4b7bec; }
+  .poll-list .create-a-poll svg {
+    height: 20px;
+    margin-right: 5px;
+    margin-top: -5px;
+    vertical-align: middle; }
 
 /*# sourceMappingURL=main.css.map */

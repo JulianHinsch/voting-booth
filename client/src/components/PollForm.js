@@ -58,11 +58,6 @@ export default class PollForm extends Component {
         }
     }
     
-    handleCancel = (event) => {
-        event.preventDefault();
-        this.props.history.push('/');
-    }
-    
     handleQuestionChange = (event) => {
         this.setState({[event.target.name]:event.target.value});
         this.validateQuestion(event.target.value);
@@ -95,7 +90,7 @@ export default class PollForm extends Component {
         });
 	}
 
-	addAnswer = () => {
+	addOption = () => {
         let nextOptions = this.state.options;
         nextOptions.push("");
 		this.setState({options: nextOptions});
@@ -121,9 +116,24 @@ export default class PollForm extends Component {
         let count = -1;
         return (
             <div className='poll-form-container content'>
-                <h1> Create a new Poll! </h1>
                 <div className='form'>
-                    <label htmlFor='question'> Ask something... </label>
+                    <Link className='back-link' to="/">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg" 
+                            width="24" 
+                            height="24" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Home
+                    </Link>
+                    <h1> Create a new Poll! </h1>
+                    <label htmlFor='question'> Ask anything... </label>
                     <input
                         name='question'
                         type='textarea'
@@ -143,29 +153,12 @@ export default class PollForm extends Component {
                                     onChange={this.handleOptionChange}/>
                             )
                         })}
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            width="24" 
-                            height="24" 
-                            viewBox="0 0 24 24" 
-                            fill="none"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className='add-option'
-                            onClick={this.addAnswer}>
-                            <circle cx="12" cy="12" r="10" stroke="#4b7bec"></circle>
-                            <line x1="12" y1="8" x2="12" y2="16" stroke="#4b7bec"></line>
-                            <line x1="8" y1="12" x2="16" y2="12" stroke="#4b7bec"></line>
-                        </svg>
-                        <div className="err-msg">{this.state.optionErrMsg}</div>
-                    </div>
-                    <div className="button-container">
-                        <button className="cancel" onClick={this.handleCancel}> Cancel </button>
+                        <p className="err-msg">{this.state.optionErrMsg}</p>
+                        <p className='add-option' onClick={this.addOption}>Add an option...</p>
                         <button 
                             className={`submit-button ${this.state.canSubmit ? '' : 'disabled'}`}
                             onClick={this.handleSubmit}>
-                            Create Poll!
+                            Create Poll
                         </button>
                     </div>
                 </div>

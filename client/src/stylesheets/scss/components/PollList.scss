@@ -1,21 +1,16 @@
 .poll-list {
-	padding: 30px 0px 50px 0px;
-}
-
-.poll-list h1 {
-	width: 80%;
-	margin: 0px auto 20px auto;
+    padding: 40px 5% 40px 5%;
 }
 
 .poll-list .poll {
-    width: 80%;
-    margin: 30px auto 40px auto;
-    text-align: left;
+    width: 100%;
+    margin: 20px auto 20px auto;
     & a {
         color: black;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 20px;
+        font-weight: 500;
         &:hover {
             opacity: 0.8;
         }
@@ -25,44 +20,25 @@
         color: #666;
         font-size: 12px;
     }
-    
-    & hr {
-        display: none;
-        width: 100px;
-        height: 2px;
-        background-color: #f5f5f5;
-        border: 0px;
-        margin: 20px auto;
+}
+
+.poll-list hr {
+    width: 100%;
+    height: 2px;
+    background-color: #f5f5f5;
+    border: 0px;
+    margin: 20px auto;
+}
+
+.poll-list .create-a-poll {
+    color: $brand-blue;
+    & svg {
+        height: 20px;
+        margin-right: 5px;
+        margin-top: -5px;
+        vertical-align: middle;
     }
 }
 
-.link-container {
-	margin: 0px auto;
-	width: 80%;
-    text-align: left;
-}
-
-.link-container div {
-    line-height: 30px;
-    width: 100px;
-    & a {
-        color: $brand-blue;
-        white-space: nowrap;
-        font-size: 14px;
-        color: #666;
-        & svg {
-            color: $brand-blue;
-            vertical-align: middle;
-            margin-top: -2px;
-            height: 18px;
-            &.add-option {
-                margin-right: 4px;
-            }
-        }
-    }
-    &:hover {
-        text-decoration: underline;
-    }
-}
 
 

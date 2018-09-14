@@ -19,7 +19,13 @@ export default class Poll extends Component {
             voted: false,
             selectedOption: undefined,
         }
-	}
+    }
+    
+    componentDidMount() {
+		if(this.props.poll) {
+            document.title = `Voting Booth | ${this.props.poll.get('question')}`;
+        } 
+    }
     
     handleSelect = (option) => {
         if(!this.state.voted) {
@@ -50,9 +56,21 @@ export default class Poll extends Component {
         return this.props.poll ? (
             <div>
                 <div className="poll-detail content">      
-                    <div className='back-link'>
-                        <Link to="/polls"> &#9666;  All Polls </Link>
-                    </div>
+                    <Link className='back-link' to="/polls">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg" 
+                            width="24" 
+                            height="24" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        All Polls
+                    </Link>
                     <h1>{this.props.poll.get('question')}</h1>
                     <h4>Asked {moment(this.props.poll.get('createdAt')).fromNow()}</h4>
                     {this.props.poll.get('options').map(option => (

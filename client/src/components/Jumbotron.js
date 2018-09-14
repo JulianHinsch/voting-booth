@@ -8,14 +8,12 @@ const Jumbotron = (props) => {
     return props.loading ? <Loading/> : (
         <div className="content jumbotron">
             <h1>Welcome to Voting Booth!</h1>
-            <div className="button-container">
-                <Link to="/new">
-                    <button> Create a Poll! </button>
-                </Link>
-                <Link to="/polls">
-                    <button> View All Polls </button>
-                </Link>
-            </div>
+            <Link to="/new">
+                <button> Create a Poll </button>
+            </Link>
+            <Link to="/polls">
+                <button> View All Polls </button>
+            </Link>
         </div>
     )
 }
