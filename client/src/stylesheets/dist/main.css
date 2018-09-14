@@ -92,13 +92,15 @@ header {
   margin: 35vh auto; }
 
 .option {
-  height: 60px;
-  text-align: left;
-  border: 1px solid #aaa; }
-  .option:hover {
-    background-color: #f7f7f7;
-    cursor: pointer; }
-  .option.voted {
+  margin-top: -1px; }
+  .option table:first-child tr {
+    height: 60px;
+    text-align: left;
+    border: 1px solid #aaa; }
+    .option table:first-child tr:hover {
+      background-color: #f7f7f7;
+      cursor: pointer; }
+  .option.voted table:first-child tr {
     opacity: 0.7;
     background-color: #fff !important;
     cursor: default !important; }
@@ -112,13 +114,22 @@ header {
 
 .option-results {
   border: 1px solid #aaa;
+  border-top: none;
   height: 30px; }
 
+.option-results tr {
+  height: 30px; }
+  .option-results tr:first-child {
+    height: 40px; }
+
+.option-results td:first-child {
+  padding-left: 10px; }
 .option-results td.votes {
   width: 90px;
-  padding-left: 10px; }
+  font-size: 12px; }
 .option-results td.percentage {
-  width: 60px; }
+  width: 60px;
+  font-size: 12px; }
 .option-results td.bar {
   padding-right: 10px; }
   .option-results td.bar div {
@@ -144,6 +155,7 @@ header {
 
 .poll-detail h4 {
   font-weight: normal;
+  font-size: 14px;
   color: #666; }
 
 .poll-detail .back-link {
@@ -158,7 +170,6 @@ header {
     vertical-align: middle; }
 
 .poll-detail table {
-  table-layout: fixed;
   border-collapse: collapse;
   width: 100%; }
   .poll-detail table.option-results-list {

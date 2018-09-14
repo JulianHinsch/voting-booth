@@ -15,6 +15,7 @@
 
 .poll-detail h4 {
     font-weight: normal;
+    font-size: 14px;
     color: #666;
 }
 
@@ -33,7 +34,6 @@
 }
 
 .poll-detail table {
-    table-layout: fixed;
     border-collapse: collapse;
     width: 100%;
     &.option-results-list {

@@ -1,15 +1,27 @@
 .option-results {
     border: 1px solid #aaa;
+    border-top: none;
     height: 30px;
 }
 
+.option-results tr {
+    height: 30px;
+    &:first-child {
+        height: 40px;
+    }
+}
+
 .option-results td {
+    &:first-child {
+        padding-left: 10px;
+    }
     &.votes {
         width: 90px;
-        padding-left: 10px;
+        font-size: 12px;
     }
     &.percentage {
         width: 60px;
+        font-size: 12px;
     }
     &.bar {
         padding-right: 10px;
@@ -23,5 +35,5 @@
                 border-radius: 5px 0px 0px 5px;
             }
         }
-    }
+    } 
 }
