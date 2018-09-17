@@ -44,12 +44,8 @@ $ cd client
 $ npm run sass
 ```
 
-## TODO: (Updated 8/29/18)
+## TODO: (Updated 9/17/18)
 
 - Write tests
 - Add auth systems, prevent voting more than once
-- Add a general 404 page
-- Improve error handling and loading
 - Refactor form validation methods
-- General restyle
-- Test styles for mobile on real iPhone
