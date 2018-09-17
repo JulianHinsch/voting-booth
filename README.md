@@ -1,11 +1,14 @@
 # Voting Booth
 
-Create polls for the public!
+Create polls and get responses from the public!
 
 Database: Postgres
+
 Back End: Node.js, Express, Sequelize
+
 Front End: React, Redux, Sass
-Libraries Used: [Moment.js](https://momentjs.com/), [Immutable.js](https://facebook.github.io/immutable-js/)
+
+Libraries Used: [Moment.js](https://momentjs.com/), [Immutable.js](https://facebook.github.io/immutable-js/), [Axios] (https://github.com/axios/axios)
 
 ## Run it locally!
 
