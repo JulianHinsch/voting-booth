@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import Loading from './Loading';
 
-const Jumbotron = (props) => {
+const Home = (props) => {
     return props.loading ? <Loading/> : (
-        <div className="content jumbotron">
+        <div className="content home">
             <h1>Welcome to Voting Booth!</h1>
             <Link to="/new">
                 <button> Create a Poll </button>
@@ -18,10 +18,10 @@ const Jumbotron = (props) => {
     )
 }
 
-Jumbotron.propTypes = {
+Home.propTypes = {
     loading: PropTypes.bool.isRequired,
 }
 
-export default Jumbotron;
+export default Home;
 
 

@@ -34,7 +34,7 @@ export default class PollForm extends Component {
     }
 
     handleKeyDown = (event) => {
-        //'enter' key
+        //enter key
         if(event.keyCode === 13) {
             event.preventDefault();
             this.handleSubmit();
@@ -42,8 +42,8 @@ export default class PollForm extends Component {
     }
 
     handleSubmit = () => {
-        let pollId = uuid.v4();
         if(this.state.canSubmit) {
+            let pollId = uuid.v4();            
             this.props.createPoll({
                 id: pollId,
                 question: this.state.question,
@@ -96,9 +96,6 @@ export default class PollForm extends Component {
 		this.setState({options: nextOptions});
 	}
 
-    /**
-     * TODO: refactor, combine validateQuestion and validateOptions
-     */
 	validateForm = (question, options) => {
         if (question==="") {
             return false;

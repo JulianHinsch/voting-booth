@@ -18,7 +18,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className='page'>
+            <div>
                 <Header/>
                 {this.props.error ? (
                     <Error/>

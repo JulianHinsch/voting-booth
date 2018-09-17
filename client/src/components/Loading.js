@@ -1,9 +1,11 @@
 import React from 'react';
 
+/**
+ * SVG by Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL
+ */
 const Loading = () => {
     return (
         <div className='loading'>
-            {/* By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL */}
             <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="blue">
                 <g fill="none" fillRule="evenodd">
                     <g transform="translate(1 1)" strokeWidth="2">

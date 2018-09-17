@@ -44,7 +44,7 @@ button {
     background-color: #f2f3f5; } }
 .error {
   top: 35vh;
-  border: none; }
+  text-align: center; }
 
 header {
   position: fixed;
@@ -78,11 +78,11 @@ header {
 
   .text-logo {
     display: block; } }
-.jumbotron {
+.home {
   padding: 30px 0px 50px 0px;
   text-align: center; }
 
-.jumbotron button {
+.home button {
   width: 80%;
   height: 60px;
   margin: 15px auto;
@@ -92,10 +92,12 @@ header {
   background-color: #4b7bec;
   color: white;
   cursor: pointer; }
-  .jumbotron button:hover {
+  .home button:hover {
     opacity: 0.5; }
 
 .loading {
+  width: 100px;
+  text-align: center;
   margin: 35vh auto; }
 
 .option {

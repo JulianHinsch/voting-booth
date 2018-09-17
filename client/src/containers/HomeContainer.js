@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import Jumbotron from '../components/Jumbotron.js';
+import Home from '../components/Home.js';
 
 const mapStateToProps = (state, ownProps) => {
     return ({
@@ -8,6 +8,6 @@ const mapStateToProps = (state, ownProps) => {
     })
 }
 
-const JumbotronContainer = connect(mapStateToProps, null)(Jumbotron); 
+const HomeContainer = connect(mapStateToProps, null)(Home); 
 
-export default JumbotronContainer;
+export default HomeContainer;

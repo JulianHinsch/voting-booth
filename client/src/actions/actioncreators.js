@@ -2,8 +2,6 @@ import * as types from './actiontypes';
 import { API_ROOT } from '../config/apiconfig';
 import axios from 'axios';
 
-//polls
-
 export const loadPollsStart = () => ({
     type: types.LOAD_POLLS_START,
 });
@@ -15,46 +13,6 @@ export const loadPollsFailure = (err) => ({
     type: types.LOAD_POLLS_FAILURE,
     err
 });
-
-export const createPollStart = () => ({
-    type: types.CREATE_POLL_START,
-});
-export const createPollSuccess = (poll) => ({
-    type: types.CREATE_POLL_SUCCESS, 
-    poll
-});
-export const createPollFailure = (err) => ({
-    type: types.CREATE_POLL_FAILURE,
-    err
-});
-
-export const deletePollStart = () => ({
-    type: types.DELETE_POLL_START,
-});
-export const deletePollSuccess = (poll) => ({
-    type: types.DELETE_POLL_SUCCESS, 
-    poll
-});
-export const deletePollFailure = (err) => ({
-    type: types.DELETE_POLL_FAILURE,
-    err
-});
-
-//options
-
-export const updateOptionStart = () => ({
-    type: types.UPDATE_OPTION_START,
-});
-export const updateOptionSuccess = (option) => ({
-    type: types.UPDATE_OPTION_SUCCESS,
-    option
-});
-export const updateOptionFailure = (err) => ({
-    type: types.UPDATE_OPTION_FAILURE,
-    err
-});
-
-//async requests
 
 export const loadPolls = () => {
 	return dispatch => {
@@ -69,6 +27,18 @@ export const loadPolls = () => {
 	}
 }
 
+export const createPollStart = () => ({
+    type: types.CREATE_POLL_START,
+});
+export const createPollSuccess = (poll) => ({
+    type: types.CREATE_POLL_SUCCESS, 
+    poll
+});
+export const createPollFailure = (err) => ({
+    type: types.CREATE_POLL_FAILURE,
+    err
+});
+
 export const createPoll = (poll) => {
 	return dispatch => {
         dispatch(createPollStart());
@@ -81,6 +51,18 @@ export const createPoll = (poll) => {
         })
 	}
 }
+
+export const deletePollStart = () => ({
+    type: types.DELETE_POLL_START,
+});
+export const deletePollSuccess = (poll) => ({
+    type: types.DELETE_POLL_SUCCESS, 
+    poll
+});
+export const deletePollFailure = (err) => ({
+    type: types.DELETE_POLL_FAILURE,
+    err
+});
 
 export const deletePoll = (id) => {
     return dispatch => {
@@ -95,6 +77,18 @@ export const deletePoll = (id) => {
     }
 }
 
+export const updateOptionStart = () => ({
+    type: types.UPDATE_OPTION_START,
+});
+export const updateOptionSuccess = (option) => ({
+    type: types.UPDATE_OPTION_SUCCESS,
+    option
+});
+export const updateOptionFailure = (err) => ({
+    type: types.UPDATE_OPTION_FAILURE,
+    err
+});
+
 export const updateOption = (id, option) => {
 	return (dispatch) => {
         dispatch(updateOptionStart());
@@ -108,11 +102,18 @@ export const updateOption = (id, option) => {
   			dispatch(updateOptionSuccess(option));
   		})
   		.catch(err => {
-            console.log(err);
             dispatch(updateOptionFailure(err));       
         })
 	}
 }
+
+
+
+
+
+
+
+
 
 
 

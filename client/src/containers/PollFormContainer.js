@@ -5,7 +5,6 @@ import PollForm from '../components/PollForm.js';
 const mapDispatchToProps = (dispatch) => {
 	return {
 		createPoll: (poll) => {
-            console.log(poll);
 			dispatch(actions.createPoll(poll));
 		},
 	}
